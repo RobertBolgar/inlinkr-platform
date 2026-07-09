@@ -1,6 +1,6 @@
-import { SignIn } from '@clerk/clerk-react';
+import { SignIn } from '../lib/auth/clerk';
 import { useSearchParams } from 'react-router-dom';
-import { useAuth } from '@clerk/clerk-react';
+import { useAuth } from '../lib/auth/clerk';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { savePendingRedirect, getPendingRedirect, clearPendingRedirect } from '../lib/pending-redirect';

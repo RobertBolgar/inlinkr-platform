@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
-import { SignedIn, SignedOut, useAuth } from '@clerk/clerk-react';
+import { SignedIn, SignedOut, useAuth } from './lib/auth/clerk';
 import { AuthProvider, useAuth as useAppAuth } from './contexts/AuthContext';
+import { DevModeIndicator } from './components/DevModeIndicator';
 import { captureReferralFromUrl, isValidReferralCode } from './lib/referral';
 import { hasProAccess } from './lib/plan';
 import { useEffect } from 'react';
@@ -344,6 +345,7 @@ function App() {
         <div className="min-h-screen min-h-[100dvh] bg-gray-950">
           <AuthRedirectHandler />
           <AppRoutes />
+          <DevModeIndicator />
         </div>
       </Router>
     </AuthProvider>

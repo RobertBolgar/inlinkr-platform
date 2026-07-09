@@ -1,5 +1,5 @@
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import { useAuth as useClerkAuth } from '@clerk/clerk-react';
+import { useAuth as useClerkAuth } from '../lib/auth/clerk';
 import { useAuth as useAppAuth } from '../contexts/AuthContext';
 import { useEffect, useState } from 'react';
 

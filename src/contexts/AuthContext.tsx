@@ -1,8 +1,9 @@
 import { createContext, useContext, useEffect, useState, useMemo } from 'react';
-import { useUser as useClerkUser, useAuth as useClerkAuth } from '@clerk/clerk-react';
+import { useUser as useClerkUser, useAuth as useClerkAuth } from '../lib/auth/clerk';
 import { User } from '../lib/cloudflare';
 import { hasProAccess } from '../lib/plan';
 import { getStoredReferralCode, clearStoredReferralCode } from '../lib/referral';
+import { isDevAuthEnabled, DEV_USER } from '../lib/auth/dev';
 
 interface AuthContextType {
   user: User | null;
@@ -80,6 +81,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const refreshUser = async () => {
+    if (isDevAuthEnabled) {
+      setUser(DEV_USER);
+      return;
+    }
+
     if (!clerkUser) {
       setUser(null);
       return;
@@ -133,6 +139,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const initAuth = async () => {
+      if (isDevAuthEnabled) {
+        setUser(DEV_USER);
+        setLoading(false);
+        return;
+      }
+
       if (!clerkLoaded) {
         return;
       }
@@ -193,6 +205,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [clerkUser, clerkLoaded]);
 
   const signOut = async () => {
+    if (isDevAuthEnabled) return;
     setUser(null);
   };
 

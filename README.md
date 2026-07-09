@@ -14,6 +14,10 @@ A modern link shortening and analytics platform built entirely on Cloudflare's e
 - **Email**: Resend API
 - **YouTube Integration**: Google OAuth 2.0
 
+## Development Notes
+
+For temporary development workflows, see [`DEVIN_FLOW.md`](DEVIN_FLOW.md).
+
 ## Features
 
 - Clean, memorable short links for YouTube creators

@@ -1,7 +1,7 @@
 import { Layout } from '../components/Layout';
 import { Check } from 'lucide-react';
 import { useAuth as useAppAuth } from '../contexts/AuthContext';
-import { useAuth as useClerkAuth } from '@clerk/clerk-react';
+import { useAuth as useClerkAuth } from '../lib/auth/clerk';
 import { useState, useEffect } from 'react';
 import { SubscriptionHubModal } from '../components/SubscriptionHubModal';
 import { PlanChangeConfirmModal } from '../components/PlanChangeConfirmModal';

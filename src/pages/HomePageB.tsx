@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { Check, X, Play, Copy, Zap, Video, TrendingUp, Users, BarChart3, Shield } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
-import { useAuth as useClerkAuth } from '@clerk/clerk-react';
+import { useAuth as useClerkAuth } from '../lib/auth/clerk';
 import { getCheckoutIntentUrl } from '../lib/pending-redirect';
 import { PublicNav } from '../components/PublicNav';
 import { useFounderStats } from '../lib/hooks/useFounderStats';

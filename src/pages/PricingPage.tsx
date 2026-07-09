@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Check } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { useAuth } from '@clerk/clerk-react';
+import { useAuth } from '../lib/auth/clerk';
 import { getCheckoutIntentUrl, CheckoutPlan, clearPendingRedirect } from '../lib/pending-redirect';
 import { PublicNav } from '../components/PublicNav';
 import { useFounderStats } from '../lib/hooks/useFounderStats';

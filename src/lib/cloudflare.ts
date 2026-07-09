@@ -277,6 +277,8 @@ export interface User {
   referral_pro_plus_granted?: number | boolean;
   has_founder_access?: number | boolean;
   youtube_avatar_url?: string | null;
+  isAdmin?: boolean;
+  role?: string;
 }
 
 // Export the API client

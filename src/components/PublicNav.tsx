@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { useAuth } from '@clerk/clerk-react';
+import { useAuth } from '../lib/auth/clerk';
 
 export function PublicNav() {
   const { isSignedIn } = useAuth();

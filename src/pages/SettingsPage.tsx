@@ -3,13 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { Layout } from '../components/Layout';
 import { SubscriptionHubModal } from '../components/SubscriptionHubModal';
 import { useAuth } from '../contexts/AuthContext';
-import { useAuth as useClerkAuth } from '@clerk/clerk-react';
+import { useAuth as useClerkAuth, useUser as useClerkUser } from '../lib/auth/clerk';
 import { analytics } from '../lib/analytics';
 import { getEffectivePlan, hasActiveReferralReward, hasProAccess } from '../lib/plan';
 import { getDisplayAvatar } from '../lib/avatar';
 import { Avatar } from '../components/Avatar';
 import { CreatorImpactCard } from '../components/CreatorImpactCard';
-import { useUser as useClerkUser } from '@clerk/clerk-react';
 
 export function SettingsPage() {
   const { user, refreshUser, signOut } = useAuth();

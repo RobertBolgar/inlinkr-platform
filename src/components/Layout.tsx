@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { useAuth as useClerkAuth, useUser as useClerkUser } from '@clerk/clerk-react';
+import { useAuth as useClerkAuth, useUser as useClerkUser } from '../lib/auth/clerk';
 import { useAuth } from '../contexts/AuthContext';
 import { getDisplayAvatar } from '../lib/avatar';
 import { LogOut, X } from 'lucide-react';
