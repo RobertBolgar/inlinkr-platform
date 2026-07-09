@@ -42,6 +42,11 @@ export function ClerkProvider(props: any) {
   if (isDevAuthEnabled) {
     return <>{props.children}</>;
   }
+
+  if (!props.publishableKey) {
+    throw new Error('Missing VITE_CLERK_PUBLISHABLE_KEY environment variable');
+  }
+
   return <RealClerkProvider {...props} />;
 }
 
