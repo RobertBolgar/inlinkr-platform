@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #030712; /* gray-950 */
+  overscroll-behavior: none;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+#root {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: #030712; /* gray-950 */
+}

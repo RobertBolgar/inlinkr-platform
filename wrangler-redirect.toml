@@ -1,0 +1,15 @@
+# ⚠️ DO NOT DEPLOY - OBSOLETE CONFIGURATION
+# This file is OBSOLETE and STAGING-BOUND.
+# Current production redirect Worker uses wrangler-go.toml instead.
+# This config points to staging D1 (tubelinkr-db) and should NOT be used for production.
+# Use wrangler-go.toml for go.tubelinkr.com production deployment.
+
+name = "tubelinkr-redirect-worker"
+main = "redirect-worker.js"
+compatibility_date = "2024-04-07"
+
+# D1 database binding
+[[d1_databases]]
+binding = "DB"
+database_name = "tubelinkr-db"
+database_id = "7fd2cd09-fafa-496f-8310-a7e86ca5c03c"

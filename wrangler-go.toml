@@ -1,0 +1,22 @@
+name = "tubelinkr-go"
+main = "worker.js"
+compatibility_date = "2024-04-07"
+
+# Routes for go.tubelinkr.com and wildcard subdomains
+routes = [
+  "go.tubelinkr.com/*",
+  "*.tubelinkr.com/*"
+]
+
+# Environment variables for Pages origins
+[vars]
+PAGES_ORIGIN = "https://tubelinkr.com"
+PRO_DEV_PAGES_ORIGIN = "https://pro-dev.tubelinkrgit.pages.dev"
+FREE_DEV_PAGES_ORIGIN = "https://free-dev.tubelinkrgit.pages.dev"
+API_ORIGIN = "https://tubelinkr.com"
+
+# D1 database binding
+[[d1_databases]]
+binding = "DB"
+database_name = "tubelinkr-prod-db"
+database_id = "97ea0d89-0e4f-449a-8ad9-1e8c7c2b689c"

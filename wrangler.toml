@@ -1,0 +1,30 @@
+name = "tubelinkr"
+compatibility_date = "2024-04-07"
+pages_build_output_dir = "dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "tubelinkr-db"
+database_id = "7fd2cd09-fafa-496f-8310-a7e86ca5c03c"
+
+[[rate_limits]]
+binding = "RATE_LIMITER"
+
+# Enable diagnostics on pro-dev for debugging attribution issues
+vars = { ENABLE_DIAGNOSTICS = "true" }
+
+[env.production]
+vars = { ENVIRONMENT = "production" }
+
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "tubelinkr-prod-db"
+database_id = "97ea0d89-0e4f-449a-8ad9-1e8c7c2b689c"
+
+[env.preview]
+vars = { ENVIRONMENT = "preview" }
+
+[[env.preview.d1_databases]]
+binding = "DB"
+database_name = "tubelinkr-db"
+database_id = "7fd2cd09-fafa-496f-8310-a7e86ca5c03c"
