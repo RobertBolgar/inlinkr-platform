@@ -14,12 +14,14 @@ binding = "RATE_LIMITER"
 vars = { ENABLE_DIAGNOSTICS = "true" }
 
 [env.production]
+# Temporary development phase: app.inlinkr.com is the InLinkr development environment,
+# even though Cloudflare still labels this environment as Production.
 vars = { ENVIRONMENT = "production" }
 
 [[env.production.d1_databases]]
 binding = "DB"
-database_name = "tubelinkr-prod-db"
-database_id = "97ea0d89-0e4f-449a-8ad9-1e8c7c2b689c"
+database_name = "tubelinkr-db"
+database_id = "7fd2cd09-fafa-496f-8310-a7e86ca5c03c"
 
 [env.preview]
 vars = { ENVIRONMENT = "preview" }
