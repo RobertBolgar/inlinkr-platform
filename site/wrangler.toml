@@ -1,0 +1,6 @@
+name = "inlinkr-home"
+compatibility_date = "2024-04-07"
+
+# The static marketing site is built from the site/ directory.
+# No build command is needed because the files are already static HTML/CSS.
+pages_build_output_dir = "."
