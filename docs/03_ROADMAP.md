@@ -1,101 +1,131 @@
 # InLinkr Roadmap
 
----
+This roadmap is a living document. Completed items are checked. Active, future, and blocked items are unchecked and labeled.
 
-# Phase 1 — Platform Foundation
+## Completed ✅
 
-✅ Domain
-
-✅ GitHub
-
-✅ Cloudflare
-
-✅ Landing page
-
-✅ Development environment
-
-✅ Documentation
-
----
-
-# Phase 2 — Platform Core
-
-⬜ Shared authentication
-
-⬜ Shared billing
-
-⬜ Shared profiles
-
-⬜ Shared analytics
-
-⬜ Shared subscriptions
-
-⬜ Product registry
+- [x] Domain acquired
+- [x] Gmail created
+- [x] GitHub repo created
+- [x] TubeLinkr cloned safely
+- [x] Cloudflare Pages projects created
+- [x] inlinkr.com live
+- [x] app.inlinkr.com live
+- [x] go-dev.inlinkr.com live
+- [x] tubelinkr-db assigned to InLinkr development
+- [x] Documentation reorganized
+- [x] Product vision completed
+- [x] Platform schema completed
+- [x] Development auth created
+- [x] TubeLinkr production left untouched
 
 ---
 
-# Phase 3 — TubeLinkr Migration
+## Phase 1 — Finish development lane (Active)
 
-Move TubeLinkr onto platform services.
-
-Keep user experience unchanged.
-
-No customer disruption.
-
----
-
-# Phase 4 — QRLinkr
-
-Build QRLinkr as the second platform product.
-
-Independent dashboard.
-
-Independent branding.
-
-Shared platform.
+- [ ] Verify app DB binding
+- [ ] Verify Worker DB binding
+- [ ] Centralize redirect base URL
+- [ ] Use `go-dev.inlinkr.com` for InLinkr-generated links
+- [ ] Test link creation
+- [ ] Test redirects
+- [ ] Test click recording
+- [ ] Test placement attribution
+- [ ] Test analytics display
+- [ ] Version-control the development Worker code
 
 ---
 
-# Phase 5 — Creator Profiles
+## Phase 2 — Platform metadata schema (Future)
 
-Creator pages.
-
-Unified identity.
-
-Cross-product discovery.
-
----
-
-# Phase 6 — Platform APIs
-
-Public APIs.
-
-Internal APIs.
-
-Shared SDK.
+- [ ] Backup development D1
+- [ ] Create additive migration
+- [ ] Create `products`
+- [ ] Create `user_products`
+- [ ] Create `plans`
+- [ ] Create `subscriptions`
+- [ ] Create `profiles`
+- [ ] Seed TubeLinkr and QRLinkr
+- [ ] Backfill existing development users as TubeLinkr users
+- [ ] Verify existing TubeLinkr development functionality remains intact
 
 ---
 
-# Phase 7 — Product Expansion
+## Phase 3 — Platform shell (Future)
 
-Additional creator tools.
-
-Marketing utilities.
-
-Analytics products.
-
-New platform modules.
+- [ ] Build InLinkr Home launcher
+- [ ] Add product registry
+- [ ] Add product switcher
+- [ ] Add shared account settings
+- [ ] Preserve TubeLinkr workspace experience
+- [ ] Do not create one giant dashboard
 
 ---
 
-# Long-Term Goals
+## Phase 4 — TubeLinkr workspace (Future)
 
-One account.
+- [ ] Isolate TubeLinkr routes
+- [ ] Preserve current UI and behavior
+- [ ] Make redirects use environment-specific base URL
+- [ ] Verify YouTube OAuth
+- [ ] Verify analytics
+- [ ] Verify Traffic Proof
+- [ ] Verify referrals
+- [ ] Verify billing behavior
 
-Many products.
+---
 
-Shared infrastructure.
+## Phase 5 — QRLinkr workspace (Future)
 
-Independent experiences.
+- [ ] QR dashboard
+- [ ] QR creation
+- [ ] PNG/SVG download
+- [ ] Static QR
+- [ ] Smart QR
+- [ ] Scan analytics
+- [ ] Campaign contexts
+- [ ] QRLinkr-specific branding and onboarding
 
-Platform-powered growth.
+---
+
+## Phase 6 — Shared auth and billing (Future)
+
+- [ ] Create final InLinkr Clerk application/configuration
+- [ ] Restore real authentication
+- [ ] Verify sign-in and sign-up
+- [ ] Generalize Stripe checkout by product
+- [ ] Introduce product-scoped entitlements
+- [ ] Preserve founder and referral access
+
+---
+
+## Phase 7 — Production validation and cutover (Future)
+
+- [ ] Freeze migrations
+- [ ] Backup production
+- [ ] Apply tested migrations
+- [ ] Deploy production InLinkr redirect Worker
+- [ ] Configure `go.inlinkr.com`
+- [ ] Preserve `go.tubelinkr.com` compatibility
+- [ ] Migrate TubeLinkr login/signup only after validation
+- [ ] Rollback plan
+- [ ] Final production smoke tests
+
+---
+
+## Status Legend
+
+- **Active** — currently in progress.
+- **Future** — planned, dependencies not yet complete.
+- **Blocked** — waiting on an external decision or dependency.
+- **Completed ✅** — done and verified.
+
+No items are currently blocked.
+
+## Long-Term Goals
+
+- One account.
+- Many products.
+- Shared infrastructure.
+- Independent experiences.
+- Platform-powered growth.

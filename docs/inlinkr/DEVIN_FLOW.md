@@ -1,6 +1,19 @@
 # DEVIN_FLOW
 
-This file documents development-only workflow decisions for the InLinkr / TubeLinkr platform so they are not lost or accidentally committed to production behavior.
+This file documents development-only workflow decisions for the InLinkr / TubeLinkr platform. It is an operational development handbook, not a product or architecture document.
+
+---
+
+## Environment Context
+
+This repository is the InLinkr development workspace (`RobertBolgar/inlinkr-platform`). The current environments are:
+
+- `app.inlinkr.com` — InLinkr development app. Cloudflare Pages labels the `inlinkr-platform` project as `Production`, but this is intentionally the development and migration environment.
+- `go-dev.inlinkr.com` — development redirect domain for the `inlinkr-go-dev` Worker.
+- `tubelinkr-db` — development D1 database; the shared migration sandbox.
+- `tubelinkr.com` / `go.tubelinkr.com` / `tubelinkr-prod-db` — live TubeLinkr production. These must remain untouched.
+
+The development app and development Worker must point to the same D1 database. TubeLinkr production must not be used for InLinkr development.
 
 ---
 
@@ -9,6 +22,8 @@ This file documents development-only workflow decisions for the InLinkr / TubeLi
 ### Why it exists
 
 During the InLinkr platform build phase, the team needed to remove Clerk as a blocker while still running the full frontend. This temporary development mode allows the application to load without requiring Clerk, simulates a signed-in Pro/Admin user, and keeps all existing authentication code intact so Clerk can be restored before production launch.
+
+**This mode is temporary and forbidden for the final production launch.** It must never be enabled in a real production or public deployment.
 
 ### What files were changed
 
@@ -106,3 +121,6 @@ This mode is a frontend-only bypass. The following were intentionally not modifi
 - **Development-only:** `VITE_DEV_AUTH=true` must never be enabled in production or in a public deployment.
 - **Clerk must be restored before launch:** Remove `VITE_DEV_AUTH` and verify that `VITE_CLERK_PUBLISHABLE_KEY` is configured before launching production.
 - **No real authentication:** The mock user is not authenticated against the backend. Any API routes that validate Clerk tokens will still require valid Clerk credentials.
+- **Backend Clerk-protected APIs may still reject mock auth:** Dev auth bypasses the frontend only. Backend endpoints that require a valid Clerk JWT continue to require one.
+- **Do not enable for final launch:** Dev auth is temporary and must not be present in production.
+- **Dev environment:** `app.inlinkr.com` is currently a development environment, `go-dev.inlinkr.com` is the development redirect lane, and `tubelinkr-db` is the development database.

@@ -763,7 +763,7 @@
 
 **User benefit:** Creators can use the same affiliate link across their entire video library while still knowing which specific videos drive clicks.
 
-**Discovery method:** Technical documentation (link-architecture-documentation.md), not prominently surfaced in UI.
+**Discovery method:** Technical documentation (./link-architecture-documentation.md), not prominently surfaced in UI.
 
 ---
 

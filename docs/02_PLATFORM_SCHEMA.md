@@ -922,6 +922,82 @@ All products write to the same `events` table. The platform provides a `recordEv
 
 ---
 
-## 10. Summary
+## 10. Current Environment
+
+This section describes the active environments and the current migration sandbox. The source of truth for the latest environment details is [docs/00_CURRENT_STATE.md](00_CURRENT_STATE.md).
+
+### TubeLinkr Production
+
+| Resource | Value | Notes |
+|----------|-------|-------|
+| Repository | `RobertBolgar/tubelinkr` | Original production repository. Must remain untouched. |
+| Marketing/app domain | `tubelinkr.com` | Live production traffic. |
+| Pages project | `tubelinkrgit` | Original Cloudflare Pages project. |
+| Redirect Worker | `tubelinkr-go` | `go.tubelinkr.com` public redirect worker. |
+| Redirect domain | `go.tubelinkr.com` | Existing short links and placements. |
+| Database | `tubelinkr-prod-db` | Production D1 database. |
+| Status | `live production` | Bug fixes only unless explicitly approved. |
+
+### InLinkr Development
+
+| Resource | Value | Notes |
+|----------|-------|-------|
+| Repository | `RobertBolgar/inlinkr-platform` | Platform workspace and future product code. |
+| Marketing domain | `inlinkr.com` | Marketing site. |
+| Marketing Pages project | `inlinkr-home` | Static marketing site. |
+| App domain | `app.inlinkr.com` | Logged-in InLinkr app. |
+| App Pages project | `inlinkr-platform` | Cloudflare labels this as Production, but it is intentionally a development and migration environment. |
+| Redirect Worker | `inlinkr-go-dev` | Public redirect worker for development. |
+| Redirect domain | `go-dev.inlinkr.com` | Development short links and redirects. |
+| Database | `tubelinkr-db` | Development D1 database; shared migration sandbox. |
+| Status | `development and migration environment` | Not the final production environment. |
+
+### Environment rules
+
+- Do not rename either D1 database during migration.
+- Do not connect InLinkr development to `tubelinkr-prod-db`.
+- Do not change `tubelinkr-go` or `go.tubelinkr.com`.
+- The development app and development Worker must point to the same D1 database.
+- Migration files, not development data, become the production rollout source of truth.
+- TubeLinkr production remains untouched until the InLinkr platform is fully validated.
+
+### Sandbox note
+
+`tubelinkr-db` is the current shared migration sandbox. It is the only database the InLinkr development app and Worker should use. `go-dev.inlinkr.com` is the development redirect domain. `app.inlinkr.com` is the development app, even though Cloudflare Pages labels the `inlinkr-platform` project as Production.
+
+## 11. Audit Risks
+
+Before the production cutover, the following audit findings and risks must be resolved or explicitly accepted. The platform is not ready for production until these are reviewed.
+
+| # | Risk | Source | Action |
+|---|------|--------|--------|
+| 1 | `placements.source_code` uniqueness conflict | Original platform spec audit findings | Verify and resolve uniqueness rules before scale. |
+| 2 | Obsolete `redirect-worker.js` | Original platform spec audit findings | Remove after new `go.inlinkr.com` Worker is confirmed stable. |
+| 3 | Obsolete `wrangler-redirect.toml` | Original platform spec audit findings | Remove after Worker cutover is stable. |
+| 4 | Dead or misconfigured `functions/api/redirect.js` | Original platform spec audit findings | Remove or refactor if still present. |
+| 5 | Migration history split between `migrations/` and root `cloudflare-*.sql` files | Original platform spec audit findings | Consolidate migration history. |
+| 6 | Referral logic duplicated between Worker and Pages Functions | Original platform spec audit findings | Decide authoritative path and remove duplication. |
+| 7 | Verify referral reward columns exist in production D1 | Original platform spec audit findings | Confirm schema before cutover. |
+| 8 | Confirm IP hashing consistency | Original platform spec audit findings | Verify `hashIpAddress` and privacy rules. |
+| 9 | Current vs target schema divergence | Platform architecture review | Complete additive migrations and feature flags before cutover. |
+| 10 | Redirect base URL environment awareness | Development lane review | Centralize redirect base URL and use `go-dev.inlinkr.com` for development. |
+
+## 12. Current vs Target Architecture
+
+| Aspect | Current Architecture | Target Architecture |
+|--------|----------------------|----------------------|
+| Auth | Clerk JWT with `users` columns caching plan/status | Clerk JWT with `subscriptions` and `user_entitlements` as source of truth |
+| Billing | Stripe fields on `users` | `plans`, `subscriptions`, `user_entitlements` tables |
+| Products | Only TubeLinkr exists; product is implicit | `products`, `user_products`, product workspaces |
+| Links | `links` with product-specific `video_id` columns | `links` product-agnostic, `link_contexts` for product context |
+| Events | `click_events` | `events` with `event_type` and `product_id` |
+| Redirect | `go.tubelinkr.com` and `go-dev.inlinkr.com` | `go.inlinkr.com` with `go.tubelinkr.com` compatibility |
+| Profiles | Data in `users` and `creator_hub_settings` | Dedicated `profiles` table |
+| OAuth | `youtube_connections` only | `oauth_connections` with multiple providers |
+| Worker | `worker.js` on `go.tubelinkr.com` | `worker.js` on `go.inlinkr.com` with `go.tubelinkr.com` fallback |
+
+The migration path is additive: add platform tables, backfill data, gate new behavior behind `feature_flags`, and run cleanup/rename only after the new platform behavior is fully validated.
+
+## 13. Summary
 
 The InLinkr platform is built around a shared identity, billing, redirect, and analytics core. Existing TubeLinkr tables already contain most of the data needed; the work is to generalize them with `product_id`, `context_type`, and `context_id` fields, and to add a small number of platform tables (`products`, `user_products`, `plans`, `subscriptions`, `user_entitlements`, `profiles`). Product modules (TubeLinkr, QRLinkr, and future products) plug into this core by registering their keys, routes, plans, and feature permissions. The safest path is additive migrations, feature flags, and a final cleanup/rename phase only after the new platform behavior is fully validated.

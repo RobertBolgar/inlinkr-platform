@@ -20,7 +20,7 @@ A modern link shortening and analytics platform built entirely on Cloudflare's e
 
 ## Development Notes
 
-For temporary development workflows, see [`DEVIN_FLOW.md`](DEVIN_FLOW.md).
+For temporary development workflows, see [`DEVIN_FLOW.md`](../inlinkr/DEVIN_FLOW.md).
 
 ## Features
 

@@ -12,7 +12,7 @@
 
 ## Executive Summary
 
-**Finding:** The reusable links architecture proposed in `docs/reusable-links-architecture.md` has been **partially implemented** in production. The core infrastructure (link_usages table, API endpoints, Worker integration) exists, but the system operates in a **dual-attribution state** with both legacy (links.video_id) and new (link_usages) paths active.
+**Finding:** The reusable links architecture proposed in `./reusable-links-architecture.md` has been **partially implemented** in production. The core infrastructure (link_usages table, API endpoints, Worker integration) exists, but the system operates in a **dual-attribution state** with both legacy (links.video_id) and new (link_usages) paths active.
 
 **Biggest Architectural Risk:** The dual-attribution model creates ambiguity in analytics, proof grouping, and user-facing URL strategy. Different parts of the codebase use different canonical attribution units, which could lead to inconsistent data presentation as link_usages adoption grows.
 
@@ -546,7 +546,7 @@ if (proof.youtube_video_id && proof.destination_domain) {
 ## Exact Files Audited
 
 **Documentation:**
-1. `docs/reusable-links-architecture.md` (289 lines) - Original architecture plan
+1. `./reusable-links-architecture.md` (289 lines) - Original architecture plan
 
 **Database schema and migrations:**
 2. `cloudflare-schema.sql` (91 lines) - Base schema

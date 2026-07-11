@@ -468,4 +468,4 @@ export function getProWelcomeEmail(firstName) {
 - Implementation complexity: Low
 
 ### Document Status
-✅ Created: `docs/pro-founder-onboarding-email-plan.md`
+✅ Created: `./pro-founder-onboarding-email-plan.md`
