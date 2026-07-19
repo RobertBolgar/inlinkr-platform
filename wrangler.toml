@@ -16,7 +16,7 @@ vars = { ENABLE_DIAGNOSTICS = "true" }
 [env.production]
 # Temporary development phase: app.inlinkr.com is the InLinkr development environment,
 # even though Cloudflare still labels this environment as Production.
-vars = { ENVIRONMENT = "production" }
+vars = { ENVIRONMENT = "production", VITE_CLERK_PUBLISHABLE_KEY = "pk_test_bWF0dXJlLXRlcm1pdGUtMzQuY2xlcmsuYWNjb3VudHMuZGV2JA" }
 
 [[env.production.d1_databases]]
 binding = "DB"
@@ -24,7 +24,7 @@ database_name = "tubelinkr-db"
 database_id = "7fd2cd09-fafa-496f-8310-a7e86ca5c03c"
 
 [env.preview]
-vars = { ENVIRONMENT = "preview" }
+vars = { ENVIRONMENT = "preview", VITE_CLERK_PUBLISHABLE_KEY = "pk_test_bWF0dXJlLXRlcm1pdGUtMzQuY2xlcmsuYWNjb3VudHMuZGV2JA" }
 
 [[env.preview.d1_databases]]
 binding = "DB"
