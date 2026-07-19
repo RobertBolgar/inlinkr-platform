@@ -3,46 +3,7 @@
  * Centralizes all environment-specific URLs and settings
  */
 
-export interface Config {
-  // Base URLs
-  redirectBaseUrl: string;
-  appBaseUrl: string;
-  marketingBaseUrl: string;
-  
-  // Email configuration
-  email: {
-    enabled: boolean;
-    fromName: string;
-    fromAddress: string;
-    resendApiKey?: string;
-  };
-  
-  // Stripe configuration
-  stripe: {
-    enabled: boolean;
-    secretKey?: string;
-    publishableKey?: string;
-    webhookSecret?: string;
-    proPriceIdMonthly?: string;
-    proPriceIdYearly?: string;
-    founderPriceId?: string;
-  };
-  
-  // Clerk configuration
-  clerk: {
-    secretKey: string;
-    jwksUrl: string;
-  };
-  
-  // Google OAuth
-  google: {
-    oauthClientId?: string;
-    oauthClientSecret?: string;
-    oauthRedirectUri?: string;
-  };
-}
-
-export function getConfig(env: any): Config {
+export function getConfig(env) {
   return {
     // Base URLs
     redirectBaseUrl: env.REDIRECT_BASE_URL || 'https://go-dev.inlinkr.com',
