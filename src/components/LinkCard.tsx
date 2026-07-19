@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Link as LinkType, User } from '../lib/cloudflare';
 import { Copy, Check, ExternalLink, Plus, List, ChevronDown, ChevronUp, MoreHorizontal, Power, PowerOff, Edit2, QrCode } from 'lucide-react';
 import { hasFeature, FEATURES, hasProAccess } from '../lib/plan';
+import { config } from '../lib/config/frontend';
 
 type LinkWithStats = LinkType & {
   clicks: number;
@@ -27,7 +28,7 @@ interface LinkCardProps {
   user: User | null;
 }
 
-const PUBLIC_BASE_URL = 'https://go.tubelinkr.com';
+const PUBLIC_BASE_URL = config.redirectBaseUrl;
 
 export function LinkCard({ link, username, onToggleStatus, onAddPlacement, onViewPlacements, onShowQR, onShareProof, onRemoveBaseVideo, user }: LinkCardProps) {
   const navigate = useNavigate();

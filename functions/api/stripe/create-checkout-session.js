@@ -1,12 +1,15 @@
 import { getAuthenticatedUser } from '../auth-helper.js';
+import { getConfig } from '../lib/config.js';
 
 // Validate and sanitize Origin header to prevent open redirect attacks
 // Only allow known TubeLinkr domains for Stripe return URLs
-function getAllowedAppOrigin(request) {
+function getAllowedAppOrigin(request, env) {
   const rawOrigin = request.headers.get('origin');
+  const config = getConfig(env);
   
   // Allowed origins for Stripe return URLs
   const allowedOrigins = new Set([
+    config.appBaseUrl,
     'https://tubelinkr.com',
     'https://www.tubelinkr.com',
     'https://pro-dev.tubelinkr.com',
@@ -18,12 +21,21 @@ function getAllowedAppOrigin(request) {
     return rawOrigin;
   }
   
-  // Fallback to production origin
-  return 'https://tubelinkr.com';
+  // Fallback to configured app base URL
+  return config.appBaseUrl;
 }
 
 export async function onRequestPost(context) {
   const { request, env } = context;
+  const config = getConfig(env);
+
+  // Check if Stripe is enabled
+  if (!config.stripe.enabled) {
+    return new Response(
+      JSON.stringify({ error: 'Stripe payments are disabled in this environment' }),
+      { status: 503, headers: { 'Content-Type': 'application/json' } }
+    );
+  }
 
   try {
     const user = await getAuthenticatedUser(request, env);
@@ -44,7 +56,7 @@ export async function onRequestPost(context) {
       );
     }
 
-    if (!env.STRIPE_SECRET_KEY) {
+    if (!config.stripe.secretKey) {
       return new Response(
         JSON.stringify({ error: 'Stripe secret key not configured' }),
         { status: 500, headers: { 'Content-Type': 'application/json' } }

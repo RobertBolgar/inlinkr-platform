@@ -1,8 +1,10 @@
 import { getAuthenticatedUser } from '../auth-helper.js';
 import { getFeatureFlag, generateReferralCode, checkAndGrantReferralRewards } from '../referral-helper.js';
+import { getConfig } from '../lib/config.js';
 
 export async function onRequest(context) {
   const { request, env } = context;
+  const config = getConfig(env);
 
   try {
     // Get authenticated user
@@ -266,7 +268,7 @@ export async function onRequest(context) {
           const existingLink = existingInviteLink[0];
           if (existingLink.original_url === rawReferralUrl) {
             // Reuse it (DO NOTHING)
-            referralUrl = `https://go.tubelinkr.com/${username}/invite`;
+            referralUrl = `https://go-dev.inlinkr.com/${username}/invite`;
           } else {
             // Update existing invite link instead of creating my-invite
             await env.DB.prepare(`
@@ -275,7 +277,7 @@ export async function onRequest(context) {
               WHERE id = ?
             `).bind(rawReferralUrl, existingLink.id).run();
             
-            referralUrl = `https://go.tubelinkr.com/${username}/invite`;
+            referralUrl = `https://go-dev.inlinkr.com/${username}/invite`;
             linkCreated = true;
           }
         } else {
@@ -292,7 +294,7 @@ export async function onRequest(context) {
             'TubeLinkr Invite'
           ).run();
           
-          referralUrl = `https://go.tubelinkr.com/${username}/invite`;
+          referralUrl = `https://go-dev.inlinkr.com/${username}/invite`;
           linkCreated = true;
         }
         

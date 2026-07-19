@@ -3,9 +3,11 @@
 // and recent referral list for use in the future Settings Creator Impact section.
 
 import { getAuthenticatedUser } from '../auth-helper.js';
+import { getConfig } from '../lib/config.js';
 
 export async function onRequestGet(context) {
   const { request, env } = context;
+  const config = getConfig(env);
 
   try {
     const user = await getAuthenticatedUser(request, env);
@@ -22,7 +24,7 @@ export async function onRequestGet(context) {
 
     const referralCode = referralCodeRow?.referral_code || null;
     const referralUrl  = referralCode && user.username
-      ? `https://go.tubelinkr.com/${user.username}/invite`
+      ? `${config.redirectBaseUrl}/${user.username}/invite`
       : null;
 
     // Fetch Creator Impact stats rollup

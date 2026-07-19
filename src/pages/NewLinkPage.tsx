@@ -70,16 +70,16 @@ export function NewLinkPage() {
     if (mode === 'attach' && createdLink.placement_public_code) {
       // Attach mode: placement tracking URL
       linkUrl = createdLink?.public_code
-        ? `https://go.tubelinkr.com/${createdLink?.public_code}/${createdLink.placement_public_code}`
-        : `https://go.tubelinkr.com/${user?.username}/${createdLink?.slug}/${createdLink.placement_public_code}`;
+        ? `https://go-dev.inlinkr.com/${createdLink?.public_code}/${createdLink.placement_public_code}`
+        : `https://go-dev.inlinkr.com/${user?.username}/${createdLink?.slug}/${createdLink.placement_public_code}`;
     } else {
       // Create mode: branded link for Pro/Founder, smart short link for Free
       if (userHasProAccess) {
         linkUrl = `https://${user?.subdomain || user?.username}.tubelinkr.com/${createdLink?.slug}`;
       } else {
         linkUrl = createdLink?.public_code
-          ? `https://go.tubelinkr.com/${createdLink?.public_code}`
-          : `https://go.tubelinkr.com/${user?.username}/${createdLink?.slug}`;
+          ? `https://go-dev.inlinkr.com/${createdLink?.public_code}`
+          : `https://go-dev.inlinkr.com/${user?.username}/${createdLink?.slug}`;
       }
     }
 
@@ -702,8 +702,8 @@ export function NewLinkPage() {
                 </p>
                 {createdLink.createdPlacements.map((placement, index) => {
                   const placementUrl = createdLink?.public_code
-                    ? `https://go.tubelinkr.com/${createdLink?.public_code}/${placement.public_code}`
-                    : `https://go.tubelinkr.com/${user?.username}/${createdLink?.slug}/${placement.public_code}`;
+                    ? `https://go-dev.inlinkr.com/${createdLink?.public_code}/${placement.public_code}`
+                    : `https://go-dev.inlinkr.com/${user?.username}/${createdLink?.slug}/${placement.public_code}`;
                   return (
                     <div key={placement.public_code} className={index > 0 ? 'mt-2' : ''}>
                       <div className="font-mono text-sm text-blue-400 break-all bg-gray-950 border border-blue-900/50 rounded-lg px-3 py-2 select-all mb-2">
@@ -743,15 +743,15 @@ export function NewLinkPage() {
                 {mode === 'attach' && createdLink?.placement_public_code ? (
                   // Attach mode: placement tracking URL
                   createdLink?.public_code
-                    ? `https://go.tubelinkr.com/${createdLink?.public_code}/${createdLink.placement_public_code}`
-                    : `https://go.tubelinkr.com/${user?.username}/${createdLink?.slug}/${createdLink.placement_public_code}`
+                    ? `https://go-dev.inlinkr.com/${createdLink?.public_code}/${createdLink.placement_public_code}`
+                    : `https://go-dev.inlinkr.com/${user?.username}/${createdLink?.slug}/${createdLink.placement_public_code}`
                 ) : (
                   // Create mode: branded link for Pro/Founder, smart short link for Free
                   userHasProAccess
                     ? `https://${user?.subdomain || user?.username}.tubelinkr.com/${createdLink?.slug}`
                     : (createdLink?.public_code
-                        ? `https://go.tubelinkr.com/${createdLink?.public_code}`
-                        : `https://go.tubelinkr.com/${user?.username}/${createdLink?.slug}`)
+                        ? `https://go-dev.inlinkr.com/${createdLink?.public_code}`
+                        : `https://go-dev.inlinkr.com/${user?.username}/${createdLink?.slug}`)
                 )}
               </div>
               {(!createdLink?.createdPlacements || createdLink.createdPlacements.length === 0) && (
@@ -795,16 +795,16 @@ export function NewLinkPage() {
                   if (mode === 'attach' && createdLink?.placement_public_code) {
                     // Attach mode: placement tracking URL
                     linkUrl = createdLink?.public_code
-                      ? `https://go.tubelinkr.com/${createdLink?.public_code}/${createdLink.placement_public_code}`
-                      : `https://go.tubelinkr.com/${user?.username}/${createdLink?.slug}/${createdLink.placement_public_code}`;
+                      ? `https://go-dev.inlinkr.com/${createdLink?.public_code}/${createdLink.placement_public_code}`
+                      : `https://go-dev.inlinkr.com/${user?.username}/${createdLink?.slug}/${createdLink.placement_public_code}`;
                   } else {
                     // Create mode: branded link for Pro/Founder, smart short link for Free
                     if (userHasProAccess) {
                       linkUrl = `https://${user?.subdomain || user?.username}.tubelinkr.com/${createdLink?.slug}`;
                     } else {
                       linkUrl = createdLink?.public_code
-                        ? `https://go.tubelinkr.com/${createdLink?.public_code}`
-                        : `https://go.tubelinkr.com/${user?.username}/${createdLink?.slug}`;
+                        ? `https://go-dev.inlinkr.com/${createdLink?.public_code}`
+                        : `https://go-dev.inlinkr.com/${user?.username}/${createdLink?.slug}`;
                     }
                   }
                   window.open(linkUrl, "_blank");
@@ -1024,7 +1024,7 @@ export function NewLinkPage() {
                     <div className="flex items-center gap-2 px-3 py-2 bg-blue-900/10 border border-blue-800/30 rounded-lg">
                       <div className="w-1.5 h-1.5 bg-green-500 rounded-full flex-shrink-0" />
                       <span className="text-xs text-blue-300 font-mono">
-                        https://go.tubelinkr.com/[smart-code]
+                        https://go-dev.inlinkr.com/[smart-code]
                       </span>
                     </div>
                   )}

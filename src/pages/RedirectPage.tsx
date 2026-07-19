@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { config } from '../lib/config/frontend';
 
 export function RedirectPage() {
   const { username, slug } = useParams<{ username: string; slug: string }>();
@@ -13,8 +14,8 @@ export function RedirectPage() {
     const queryString = window.location.search;
     const hash = window.location.hash;
 
-    // Redirect to go.tubelinkr.com which handles the actual redirect logic
-    const targetUrl = `https://go.tubelinkr.com/${username}/${slug}${queryString}${hash}`;
+    // Redirect to development redirect worker which handles the actual redirect logic
+    const targetUrl = `${config.redirectBaseUrl}/${username}/${slug}${queryString}${hash}`;
     window.location.href = targetUrl;
   }, [username, slug]);
 

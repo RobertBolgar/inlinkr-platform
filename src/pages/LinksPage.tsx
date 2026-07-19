@@ -10,6 +10,7 @@ import { AddPlacementModal } from '../components/AddPlacementModal';
 import { QRCodeDisplay } from '../components/placements/QRCodeDisplay';
 import { Plus, RefreshCw, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { hasProAccess } from '../lib/plan';
+import { config } from '../lib/config/frontend';
 import {
   LinkPortfolio,
   LinkActivityChart,
@@ -184,7 +185,7 @@ export function LinksPage() {
         // Use existing QR placement
         const baseUrl = userHasProAccess && user?.subdomain
           ? `https://${user.subdomain}.tubelinkr.com`
-          : 'https://go.tubelinkr.com';
+          : config.redirectBaseUrl;
         const url = link.public_code
           ? `${baseUrl}/${link.public_code}/${qrPlacement.public_code}`
           : `${baseUrl}/${user?.username}/${link.slug}/${qrPlacement.public_code}`;
@@ -203,7 +204,7 @@ export function LinksPage() {
         if (qrData.success) {
           const baseUrl = userHasProAccess && user?.subdomain
             ? `https://${user.subdomain}.tubelinkr.com`
-            : 'https://go.tubelinkr.com';
+            : config.redirectBaseUrl;
           const url = link.public_code
             ? `${baseUrl}/${link.public_code}/${qrData.placement.public_code}`
             : `${baseUrl}/${user?.username}/${link.slug}/${qrData.placement.public_code}`;

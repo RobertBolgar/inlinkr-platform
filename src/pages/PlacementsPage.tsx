@@ -11,8 +11,9 @@ import { db as apiClient } from '../lib/cloudflare';
 import { useAuth } from '../contexts/AuthContext';
 import { hasFeature, FEATURES } from '../lib/plan';
 import { getPlacementLabel } from '../lib/placement-intelligence';
+import { config } from '../lib/config/frontend';
 
-const PUBLIC_BASE_URL = 'https://go.tubelinkr.com';
+const PUBLIC_BASE_URL = config.redirectBaseUrl;
 
 type Placement = {
   id: number;

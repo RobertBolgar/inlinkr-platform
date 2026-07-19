@@ -1,15 +1,23 @@
 import { sendTransactionalEmail } from '../email-helper.js';
 import { logActivityEvent } from '../activity-helper.js';
 import { stampReferralConversion } from '../creator-impact-helper.js';
+import { getConfig } from '../lib/config.js';
 
 export async function onRequestPost(context) {
   const { request, env } = context;
+  const config = getConfig(env);
+
+  // Check if Stripe is enabled
+  if (!config.stripe.enabled) {
+    console.log('[Stripe] Webhook processing is disabled in this environment');
+    return jsonResponse({ error: 'Stripe webhooks are disabled in this environment' }, 503);
+  }
 
   try {
     const body = await request.text();
     const signature = request.headers.get("stripe-signature");
 
-    if (!env.STRIPE_WEBHOOK_SECRET) {
+    if (!config.stripe.webhookSecret) {
       console.error("Stripe webhook secret not configured");
       return jsonResponse({ error: "Webhook secret not configured" }, 500);
     }
@@ -50,7 +58,7 @@ export async function onRequestPost(context) {
 
     const key = await crypto.subtle.importKey(
       "raw",
-      encoder.encode(env.STRIPE_WEBHOOK_SECRET),
+      encoder.encode(config.stripe.webhookSecret),
       { name: "HMAC", hash: "SHA-256" },
       false,
       ["sign"]
