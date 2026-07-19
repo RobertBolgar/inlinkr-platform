@@ -9,7 +9,7 @@ export function HomePage() {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText('https://go.tubelinkr.com/3o7wnt');
+    navigator.clipboard.writeText('https://go-dev.inlinkr.com/3o7wnt');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -57,7 +57,7 @@ export function HomePage() {
               <div className="flex flex-col sm:flex-row items-center gap-3 justify-center lg:justify-start pt-2">
                 <Link
                   to="/signup"
-                  className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors text-center"
+                  className="px-8 py-3 bg-primary hover:bg-primary text-white font-medium rounded-lg transition-colors text-center"
                 >
                   Start Free
                 </Link>
@@ -89,7 +89,7 @@ export function HomePage() {
             <div className="flex-1 flex justify-center lg:justify-end">
               <img
                 src="/hero-app-screenshot.png"
-                alt="TubeLinkr analytics dashboard"
+                alt="InLinkr analytics dashboard"
                 className="w-full max-w-sm sm:max-w-md lg:max-w-lg drop-shadow-2xl"
               />
             </div>
@@ -100,7 +100,7 @@ export function HomePage() {
               <div className="text-left">
                 <div className="text-xs text-gray-500 mb-2 uppercase tracking-wide">Your smart link</div>
                 <div className="bg-gray-950 border border-blue-900/60 rounded-lg px-4 py-3 text-sm sm:text-base text-blue-400 font-mono flex items-center justify-between">
-                  <span>go.tubelinkr.com/3o7wnt</span>
+                  <span>go-dev.inlinkr.com/3o7wnt</span>
                   <button onClick={handleCopy} className="flex items-center gap-1 text-gray-500 hover:text-gray-300 transition-colors cursor-pointer">
                     {copied ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4" />}
                   </button>
@@ -165,7 +165,7 @@ export function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               <div className="bg-gray-900/60 border border-gray-800/60 rounded-xl p-6 hover:border-gray-700/60 transition-colors">
-                <div className="text-blue-500 mb-4">
+                <div className="text-primary mb-4">
                   <Video className="w-6 h-6" />
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-3">Video Attribution</h3>
@@ -204,7 +204,7 @@ export function HomePage() {
               <div className="flex justify-center pt-2">
                 <Link
                   to="/signup"
-                  className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors text-center"
+                  className="px-8 py-3 bg-primary hover:bg-primary text-white font-medium rounded-lg transition-colors text-center"
                 >
                   Start Free
                 </Link>

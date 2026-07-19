@@ -30,9 +30,9 @@ export function RedirectPage() {
           </p>
           <a
             href="/"
-            className="inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+            className="inline-block px-6 py-3 bg-primary hover:bg-primary text-white font-medium rounded-lg transition-colors"
           >
-            Go to TubeLinkr
+            Go to InLinkr
           </a>
         </div>
       </div>

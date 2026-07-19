@@ -15,7 +15,7 @@ export function HomePageB() {
   const { displayText, isSoldOut } = useFounderStats();
 
   const handleCopy = () => {
-    navigator.clipboard.writeText('https://go.tubelinkr.com/i8yy84');
+    navigator.clipboard.writeText('https://go-dev.inlinkr.com/i8yy84');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -61,12 +61,12 @@ export function HomePageB() {
             Stop guessing which videos, descriptions, and pinned comments are driving clicks.
           </p>
           <p className="text-lg text-gray-400 leading-relaxed max-w-2xl mx-auto">
-            TubeLinkr shows you exactly where every click came from—so you can double down on what works.
+            InLinkr shows you exactly where every click came from—so you can double down on what works.
           </p>
           <div className="pt-4 flex flex-col items-center gap-3">
             <Link
               to="/signup"
-              className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors text-lg"
+              className="px-8 py-4 bg-primary hover:bg-primary text-white font-semibold rounded-xl transition-colors text-lg"
             >
               Start Tracking Free
             </Link>
@@ -121,10 +121,10 @@ export function HomePageB() {
         {/* SOLUTION */}
         <section className="py-16 border-t border-gray-800/60">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-center">
-            TubeLinkr connects every click back to its source.
+            InLinkr connects every click back to its source.
           </h2>
           <p className="text-gray-400 text-center mb-12 text-lg max-w-2xl mx-auto">
-            TubeLinkr doesn't replace your workflow.
+            InLinkr doesn't replace your workflow.
             <br />It sits on top of it.
           </p>
 
@@ -132,7 +132,7 @@ export function HomePageB() {
           <div className="flex justify-center mb-12">
             <img
               src="/TubeLinkr-SmartLinks.png"
-              alt="TubeLinkr Smart Links workflow showing two-phone tracking"
+              alt="Smart Links workflow showing two-phone tracking"
               className="w-full max-w-5xl drop-shadow-2xl"
             />
           </div>
@@ -162,7 +162,7 @@ export function HomePageB() {
           <div className="mt-12 bg-gray-900/80 border border-gray-800/60 rounded-xl p-6 sm:p-8 max-w-2xl mx-auto shadow-xl">
             <div className="text-xs text-gray-500 uppercase tracking-wide mb-3">Your smart link</div>
             <div className="bg-gray-950 border border-blue-900/60 rounded-lg px-4 py-3 text-sm text-blue-400 font-mono flex items-center justify-between mb-6">
-              <span>go.tubelinkr.com/i8yy84</span>
+              <span>go-dev.inlinkr.com/i8yy84</span>
               <button onClick={handleCopy} className="flex items-center gap-1 text-gray-500 hover:text-gray-300 transition-colors cursor-pointer">
                 {copied ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4" />}
               </button>
@@ -183,7 +183,7 @@ export function HomePageB() {
                 </div>
                 <div className="h-1.5 bg-gray-800 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-blue-500 rounded-full transition-all duration-700"
+                    className="h-full bg-primary rounded-full transition-all duration-700"
                     style={{ width: `${Math.round((clickCounts.videoA / totalClicks) * 100)}%` }}
                   />
                 </div>
@@ -206,7 +206,7 @@ export function HomePageB() {
                 </div>
                 <div className="h-1.5 bg-gray-800 rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-blue-500 rounded-full transition-all duration-700"
+                    className="h-full bg-primary rounded-full transition-all duration-700"
                     style={{ width: `${Math.round((clickCounts.videoB / totalClicks) * 100)}%` }}
                   />
                 </div>
@@ -216,7 +216,7 @@ export function HomePageB() {
               </div>
             </div>
             <p className="text-xs text-center text-gray-500 mt-5">
-              go.tubelinkr.com/i8yy84 — one link, tracked everywhere
+              go-dev.inlinkr.com/i8yy84 — one link, tracked everywhere
             </p>
           </div>
         </section>
@@ -249,7 +249,7 @@ export function HomePageB() {
               <div className="flex-1 flex justify-center">
                 <img
                   src="/TubeLinkr-Dashboard.png"
-                  alt="TubeLinkr dashboard showing analytics on iPhone"
+                  alt="InLinkr dashboard showing analytics on iPhone"
                   className="w-full max-w-sm drop-shadow-2xl"
                 />
               </div>
@@ -270,7 +270,7 @@ export function HomePageB() {
               <div className="flex-1 flex justify-center">
                 <img
                   src="/TubeLinkr-Analytics.png"
-                  alt="TubeLinkr analytics showing click attribution on iPhone"
+                  alt="InLinkr analytics showing click attribution on iPhone"
                   className="w-full max-w-sm drop-shadow-2xl"
                 />
               </div>
@@ -279,7 +279,7 @@ export function HomePageB() {
                   Anyone can claim they generate clicks.
                 </p>
                 <p className="text-white font-semibold mb-5">
-                  TubeLinkr gives creators a professional Proof Page showing:
+                  InLinkr gives creators a professional Proof Page showing:
                 </p>
                 <ul className="space-y-3 mb-6">
                   {[
@@ -289,7 +289,7 @@ export function HomePageB() {
                     'Destination',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-gray-300">
-                      <Check className="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" />
+                      <Check className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                       {item}
                     </li>
                   ))}
@@ -315,7 +315,7 @@ export function HomePageB() {
             {[
               {
                 icon: <Video className="w-5 h-5" />,
-                color: 'text-blue-500',
+                color: 'text-primary',
                 title: 'Know Which Videos Matter',
                 desc: "Find the videos actually generating clicks.",
               },
@@ -368,7 +368,7 @@ export function HomePageB() {
             YouTube measures attention.
           </h2>
           <h3 className="text-2xl sm:text-3xl font-bold mb-10 text-center text-gray-400">
-            TubeLinkr measures results.
+            InLinkr measures results.
           </h3>
           <div className="max-w-2xl mx-auto overflow-x-auto">
             <table className="w-full text-sm">
@@ -377,7 +377,7 @@ export function HomePageB() {
                   <th className="text-left py-3 pr-4 font-normal w-1/2" />
                   <th className="text-center py-3 px-4 text-gray-400 font-medium whitespace-nowrap">YouTube Studio</th>
                   <th className="text-center py-3 px-4 text-gray-400 font-medium">Bitly</th>
-                  <th className="text-center py-3 px-4 text-blue-400 font-semibold">TubeLinkr</th>
+                  <th className="text-center py-3 px-4 text-blue-400 font-semibold">InLinkr</th>
                 </tr>
               </thead>
               <tbody>
@@ -468,7 +468,7 @@ export function HomePageB() {
               <div className="mb-6" />
               <Link
                 to={getCheckoutIntentUrl('pro_yearly', isSignedIn ?? false)}
-                className="block text-center px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"
+                className="block text-center px-4 py-2.5 bg-primary hover:bg-primary text-white text-sm font-medium rounded-lg transition-colors"
               >
                 Start Pro — $197/year
               </Link>
@@ -550,7 +550,7 @@ export function HomePageB() {
             </p>
             <Link
               to="/signup"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors text-lg"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-primary text-white font-semibold rounded-xl transition-colors text-lg"
             >
               Start Tracking Free
             </Link>
@@ -573,7 +573,7 @@ export function HomePageB() {
             <Link to="/login?redirectUrl=%2Fdashboard" className="hover:text-gray-400 transition-colors">Sign In</Link>
           </div>
           <p className="text-xs text-gray-600">
-            TubeLinkr — YouTube attribution for creators who are done guessing.
+            InLinkr — YouTube attribution for creators who are done guessing.
           </p>
         </div>
       </footer>

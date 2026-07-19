@@ -135,21 +135,21 @@ export function AddPlacementModal({ isOpen, onClose, onAdd, videoContexts = [] }
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <div className="bg-gray-900 border border-gray-800 rounded-lg max-w-md w-full transition-all duration-200">
-        <div className="flex items-center justify-between p-4 border-b border-gray-800">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/65 p-4 backdrop-blur-sm">
+      <div className="animate-ink-enter w-full max-w-md rounded-xl border border-border bg-surface shadow-ink-lg">
+        <div className="flex items-center justify-between border-b border-border p-5">
           <h2 className="text-lg font-semibold text-white">
             {showVideoSelection ? 'Which video is this placement for?' : 'Track a new placement'}
           </h2>
           <button
             onClick={handleClose}
-            className="text-gray-400 hover:text-white transition-all duration-200 active:scale-[0.98] p-1 rounded hover:bg-gray-800/50"
+            className="rounded-lg p-1.5 text-text-muted transition-colors hover:bg-surface-elevated hover:text-text"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-4 space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-5 p-5">
           {showVideoSelection ? (
             <>
               {videoContexts.length > 0 && (
@@ -271,7 +271,7 @@ export function AddPlacementModal({ isOpen, onClose, onAdd, videoContexts = [] }
                   value={type}
                   onChange={(e) => setType(e.target.value)}
                   disabled={loading}
-                  className="w-full px-3 py-2 bg-gray-950 border border-gray-800 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-600 disabled:opacity-50"
+                  className="min-h-10 w-full rounded-lg border border-border bg-background px-3 py-2 text-sm text-text placeholder:text-text-subtle transition-colors focus:border-primary focus:outline-none disabled:opacity-50"
                 >
                   {placementTypes.map((pt) => (
                     <option key={pt.value} value={pt.value}>
@@ -292,7 +292,7 @@ export function AddPlacementModal({ isOpen, onClose, onAdd, videoContexts = [] }
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   disabled={loading}
-                  className="w-full px-3 py-2 bg-gray-950 border border-gray-800 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-600 disabled:opacity-50"
+                  className="min-h-10 w-full rounded-lg border border-border bg-background px-3 py-2 text-sm text-text placeholder:text-text-subtle transition-colors focus:border-primary focus:outline-none disabled:opacity-50"
                   placeholder="e.g. Spring sponsor CTA"
                   maxLength={50}
                 />
@@ -300,7 +300,7 @@ export function AddPlacementModal({ isOpen, onClose, onAdd, videoContexts = [] }
               </div>
 
               {error && (
-                <div className="bg-red-900/20 border border-red-800 text-red-400 px-3 py-2 rounded-lg text-sm">
+                <div className="rounded-lg border border-red-800/60 bg-red-950/45 px-3 py-2 text-sm text-red-200">
                   {error}
                 </div>
               )}
@@ -310,14 +310,14 @@ export function AddPlacementModal({ isOpen, onClose, onAdd, videoContexts = [] }
                   type="button"
                   onClick={handleClose}
                   disabled={loading}
-                  className="flex-1 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-lg transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:active:scale-100"
+                  className="flex min-h-10 flex-1 items-center justify-center rounded-lg border border-border bg-surface-elevated px-4 py-2 text-sm font-semibold text-text transition-colors hover:bg-surface-hover disabled:opacity-50"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:active:scale-100"
+                  className="flex min-h-10 flex-1 items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-ink-sm transition-colors hover:bg-primary disabled:opacity-50"
                 >
                   {loading ? 'Adding...' : 'Track placement'}
                 </button>

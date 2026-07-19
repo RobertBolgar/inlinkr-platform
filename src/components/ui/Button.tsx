@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'danger';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'danger';
   fullWidth?: boolean;
   loading?: boolean;
 }
@@ -21,12 +21,13 @@ export function Button({
   disabled,
   ...props 
 }: ButtonProps) {
-  const baseClassName = "text-sm font-semibold rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed";
+  const baseClassName = "inline-flex min-h-10 items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-all duration-200 ease-ink focus-visible:ring-0 disabled:pointer-events-none disabled:opacity-45";
   
   const variantClasses = {
-    primary: 'bg-blue-600 hover:bg-blue-700 text-white',
-    secondary: 'bg-gray-800 hover:bg-gray-700 text-white font-medium',
-    danger: 'bg-red-600 hover:bg-red-700 text-white',
+    primary: 'bg-primary text-white shadow-ink-sm hover:bg-primary-hover hover:shadow-ink active:translate-y-px',
+    secondary: 'border border-border bg-surface-elevated text-text hover:bg-surface-hover active:translate-y-px',
+    ghost: 'text-text-muted hover:bg-surface-elevated hover:text-text',
+    danger: 'border border-red-800/70 bg-red-950/70 text-red-200 hover:bg-red-900/70 active:translate-y-px',
   };
   
   const widthClass = fullWidth ? 'w-full' : '';

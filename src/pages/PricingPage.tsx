@@ -47,7 +47,7 @@ export function PricingPage() {
       savings: billingInterval === 'yearly' ? 'Save $31/year' : undefined,
       features: [
         'Unlimited links',
-        'Branded subdomain: username.tubelinkr.com',
+        'Branded subdomain: username.inlinkr.com',
         'Creator hub',
         'Proof pages',
         'Real-time analytics',
@@ -94,7 +94,7 @@ export function PricingPage() {
               onClick={() => setBillingInterval('monthly')}
               className={`px-6 py-2 rounded-lg font-medium transition-colors ${
                 billingInterval === 'monthly'
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-primary text-white'
                   : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
               }`}
             >
@@ -104,7 +104,7 @@ export function PricingPage() {
               onClick={() => setBillingInterval('yearly')}
               className={`px-6 py-2 rounded-lg font-medium transition-colors ${
                 billingInterval === 'yearly'
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-primary text-white'
                   : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
               }`}
             >
@@ -194,7 +194,7 @@ export function PricingPage() {
                   to={plan.cta.link}
                   className={`w-full px-6 py-3 font-medium rounded-lg transition-colors text-center block ${
                     plan.cta.primary
-                      ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                      ? 'bg-primary hover:bg-primary text-white'
                       : 'bg-gray-800 hover:bg-gray-700 text-white'
                   }`}
                 >
@@ -216,7 +216,7 @@ export function PricingPage() {
           </p>
           <p className="text-sm text-gray-500">
             Your branded link is active while your Pro plan is active.
-            Your standard TubeLinkr link always remains available.
+            Your standard Smart Link always remains available.
           </p>
         </div>
       </div>
@@ -231,7 +231,7 @@ export function PricingPage() {
             <Link to="/login" className="hover:text-gray-400 transition-colors">Sign In</Link>
           </div>
           <p className="text-xs text-gray-600">
-            TubeLinkr — YouTube attribution for creators who are done guessing.
+            InLinkr — YouTube attribution for creators who are done guessing.
           </p>
         </div>
       </footer>

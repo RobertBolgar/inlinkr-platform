@@ -21,11 +21,11 @@ export function SectionHeader({ label, description, spacing = 'md', className = 
 
   return (
     <div className={className}>
-      <div className={`text-xs font-semibold text-gray-400 uppercase tracking-wide ${spacingClass}`}>
+      <div className={`text-xs font-semibold uppercase tracking-[0.12em] text-text-muted ${spacingClass}`}>
         {label}
       </div>
       {description && (
-        <div className="text-xs text-gray-600 mt-0.5">{description}</div>
+        <div className="mt-1 text-sm text-text-subtle">{description}</div>
       )}
     </div>
   );

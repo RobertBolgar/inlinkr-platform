@@ -292,7 +292,7 @@ export function LinkCard({ link, username, onToggleStatus, onAddPlacement, onVie
                             base_video_placements: video.is_base ? link.base_video_placements : undefined
                           });
                         }}
-                        className="flex-shrink-0 px-2 py-1 bg-blue-600 hover:bg-blue-500 text-white text-[10px] font-medium rounded transition-colors"
+                        className="flex-shrink-0 px-2 py-1 bg-primary hover:bg-primary text-white text-[10px] font-medium rounded transition-colors"
                       >
                         Share Proof
                       </button>
@@ -374,7 +374,7 @@ export function LinkCard({ link, username, onToggleStatus, onAddPlacement, onVie
                 <button
                   type="button"
                   onClick={() => onAddPlacement(link.id, getAllVideos())}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg transition-all duration-200 active:scale-[0.98] shadow-sm shadow-blue-900/20"
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-primary hover:bg-primary text-white text-xs font-semibold rounded-lg transition-all duration-200 active:scale-[0.98] shadow-sm shadow-blue-900/20"
                 >
                   <Plus className="w-3.5 h-3.5" />
                   Add placement
@@ -396,7 +396,7 @@ export function LinkCard({ link, username, onToggleStatus, onAddPlacement, onVie
                 <button
                   type="button"
                   onClick={() => onViewPlacements(link.id)}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg transition-all duration-200 active:scale-[0.98] shadow-sm shadow-blue-900/20"
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-primary hover:bg-primary text-white text-xs font-semibold rounded-lg transition-all duration-200 active:scale-[0.98] shadow-sm shadow-blue-900/20"
                 >
                   <List className="w-3.5 h-3.5" />
                   Manage Link

@@ -73,7 +73,7 @@ export function UpgradePage() {
       savings: billingInterval === 'yearly' ? 'Save $31/year' : undefined,
       features: [
         'Unlimited links',
-        'Branded subdomain: username.tubelinkr.com',
+        'Branded subdomain: username.inlinkr.com',
         'Creator hub',
         'Professional creator toolkit'
       ],
@@ -87,7 +87,7 @@ export function UpgradePage() {
       priceNote: 'One-time founder access',
       badge: 'First 50 creators',
       features: [
-        'Lifetime access to TubeLinkr Pro for early supporters helping shape the future of creator placement analytics',
+        'Lifetime access to InLinkr Pro for early supporters helping shape the future of creator placement analytics',
         'Founder badge & early supporter status',
         'Lock in early creator access',
         'Help shape future creator attribution tools',
@@ -315,7 +315,7 @@ export function UpgradePage() {
               onClick={() => setBillingInterval('monthly')}
               className={`px-6 py-2 rounded-lg font-medium transition-colors ${
                 billingInterval === 'monthly'
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-primary text-white'
                   : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
               }`}
             >
@@ -325,7 +325,7 @@ export function UpgradePage() {
               onClick={() => setBillingInterval('yearly')}
               className={`px-6 py-2 rounded-lg font-medium transition-colors ${
                 billingInterval === 'yearly'
-                  ? 'bg-blue-600 text-white'
+                  ? 'bg-primary text-white'
                   : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
               }`}
             >
@@ -348,7 +348,7 @@ export function UpgradePage() {
                 key={plan.name}
                 className={`bg-gray-900 border rounded-lg p-6 relative ${
                   plan.isCurrent
-                    ? 'border-blue-500 ring-2 ring-blue-500/20'
+                    ? 'border-primary ring-2 ring-primary/20'
                     : plan.isBestValue
                     ? 'border-purple-500 ring-2 ring-purple-500/20'
                     : 'border-gray-800'
@@ -418,7 +418,7 @@ export function UpgradePage() {
                         ? 'bg-gray-700 text-gray-400 cursor-not-allowed'
                         : buttonConfig.isBilling
                         ? 'bg-gray-700 hover:bg-gray-600 text-white'
-                        : 'bg-blue-600 hover:bg-blue-700 text-white'
+                        : 'bg-primary hover:bg-primary text-white'
                     }`}
                   >
                     {billingLoading ? 'Opening...' : loading ? 'Processing...' : buttonConfig.text}
@@ -435,7 +435,7 @@ export function UpgradePage() {
           </p>
           <p className="text-sm text-gray-500">
             Your branded link is active while your Pro plan is active.
-            Your standard TubeLinkr link always remains available.
+            Your standard Smart Link always remains available.
           </p>
           {user?.plan === 'pro' && user?.subscription_status === 'active' && (
             <p className="text-sm text-gray-500 mt-2">

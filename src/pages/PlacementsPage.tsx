@@ -585,7 +585,7 @@ export function PlacementsPage() {
                   setTimeout(() => setCopiedId(null), 2000);
                 }
               }}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-lg transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-primary hover:bg-primary text-white text-xs font-medium rounded-lg transition-colors"
             >
               {copiedId === -1 ? (
                 <><CheckCircle2 className="w-3.5 h-3.5" />Copied!</>
@@ -612,7 +612,7 @@ export function PlacementsPage() {
             </p>
             <button
               onClick={() => setShowAddModal(true)}
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary hover:bg-primary text-white text-sm font-medium rounded-lg transition-colors"
             >
               <Plus className="w-4 h-4" />
               Add Placement
@@ -942,7 +942,7 @@ export function PlacementsPage() {
                                         setSelectedPlacementForAttach(placement);
                                         setShowAttachVideoModal(true);
                                       }}
-                                      className="flex items-center gap-1 px-2 py-1 bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-medium rounded transition-colors"
+                                      className="flex items-center gap-1 px-2 py-1 bg-primary hover:bg-primary text-white text-[11px] font-medium rounded transition-colors"
                                       title="Attach video to placement"
                                     >
                                       <Plus className="w-3 h-3" />

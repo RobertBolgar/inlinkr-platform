@@ -86,7 +86,7 @@ export function ReuseDestinationModal({ isOpen, onClose, linkId, linkTitle, onSu
               value={youtubeVideoId}
               onChange={(e) => setYoutubeVideoId(e.target.value)}
               placeholder="e.g., abc123xyz"
-              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
             />
           </div>
 
@@ -99,7 +99,7 @@ export function ReuseDestinationModal({ isOpen, onClose, linkId, linkTitle, onSu
               value={placementType}
               onChange={(e) => setPlacementType(e.target.value)}
               placeholder="e.g., description, pinned, bio"
-              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
             />
           </div>
 
@@ -112,7 +112,7 @@ export function ReuseDestinationModal({ isOpen, onClose, linkId, linkTitle, onSu
               value={placementName}
               onChange={(e) => setPlacementName(e.target.value)}
               placeholder="e.g., My placement"
-              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
             />
           </div>
 
@@ -125,7 +125,7 @@ export function ReuseDestinationModal({ isOpen, onClose, linkId, linkTitle, onSu
               value={sourceCode}
               onChange={(e) => setSourceCode(e.target.value)}
               placeholder="e.g., d, p, b, s, v"
-              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
             />
           </div>
 
@@ -138,7 +138,7 @@ export function ReuseDestinationModal({ isOpen, onClose, linkId, linkTitle, onSu
               value={publicCode}
               onChange={(e) => setPublicCode(e.target.value)}
               placeholder="e.g., desc1"
-              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
             />
           </div>
 
@@ -160,7 +160,7 @@ export function ReuseDestinationModal({ isOpen, onClose, linkId, linkTitle, onSu
             <button
               type="submit"
               disabled={loading}
-              className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 px-4 py-2 bg-primary hover:bg-primary text-white rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Attaching...' : 'Attach'}
             </button>

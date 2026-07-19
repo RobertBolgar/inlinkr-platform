@@ -64,7 +64,7 @@ export function SettingsPage() {
   const handleDeleteAccount = async () => {
     const confirmed = window.confirm(
       'Are you sure you want to delete your account? This will:\n\n' +
-      '• Disable your TubeLinkr account\n' +
+      '• Disable your InLinkr account\n' +
       '• Deactivate all your links\n' +
       '• This action cannot be undone\n\n' +
       'Do you want to proceed?'
@@ -479,7 +479,7 @@ export function SettingsPage() {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 disabled={loading || !userHasProAccess}
-                className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/60 focus:border-blue-600 disabled:opacity-50 text-sm transition-all"
+                className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary disabled:opacity-50 text-sm transition-all"
                 placeholder="Enter new username"
               />
               {!userHasProAccess && (
@@ -497,7 +497,7 @@ export function SettingsPage() {
                 type="text"
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
-                className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/60 focus:border-blue-600 text-sm transition-all"
+                className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary text-sm transition-all"
                 placeholder="Your name or brand"
               />
               <p className="mt-1 text-xs text-gray-600">Leave empty to use your username</p>
@@ -523,7 +523,7 @@ export function SettingsPage() {
               type="button"
               onClick={handleSaveProfile}
               disabled={loading}
-              className="w-full py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-xl transition-colors"
+              className="w-full py-3 bg-primary hover:bg-primary disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-xl transition-colors"
             >
               {loading ? 'Saving...' : 'Save profile'}
             </button>
@@ -532,7 +532,7 @@ export function SettingsPage() {
           <div className="mt-2 pt-2 border-t border-gray-800">
             <div className="bg-yellow-900/15 border border-yellow-700/30 rounded-xl px-3 py-2">
               <p className="text-xs text-yellow-300 leading-relaxed">
-                <strong>⚠️ Important:</strong> Your username is used for your Creator Hub and branded URLs like rob.tubelinkr.com. Changing it may affect public creator links.
+                <strong>⚠️ Important:</strong> Your username is used for your Creator Hub and branded URLs like rob.inlinkr.com. Changing it may affect public creator links.
               </p>
             </div>
           </div>
@@ -569,7 +569,7 @@ export function SettingsPage() {
               <button
                 onClick={handleConnectYouTube}
                 disabled={youtubeLoading}
-                className="w-full py-2.5 px-4 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-xl transition-colors"
+                className="w-full py-2.5 px-4 bg-primary hover:bg-primary disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-xl transition-colors"
               >
                 {youtubeLoading ? 'Connecting...' : 'Connect channel'}
               </button>
@@ -584,7 +584,7 @@ export function SettingsPage() {
             <p className="text-xs text-gray-600 mb-3">Customize your public creator hub, featured content, resources, and jump links.</p>
             <button
               onClick={() => navigate('/settings/hub')}
-              className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-xl transition-colors"
+              className="w-full py-3 bg-primary hover:bg-primary text-white text-sm font-semibold rounded-xl transition-colors"
             >
               Manage Creator Hub
             </button>
@@ -626,7 +626,7 @@ export function SettingsPage() {
                   </p>
                   <button
                     onClick={() => navigate('/upgrade')}
-                    className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-xl transition-colors mt-1"
+                    className="w-full py-2.5 bg-primary hover:bg-primary text-white text-sm font-semibold rounded-xl transition-colors mt-1"
                   >
                     Upgrade to keep Pro active
                   </button>
@@ -729,7 +729,7 @@ export function SettingsPage() {
                 <p className="text-xs text-gray-500">Get unlimited links, branded subdomain, creator hub, and deeper traffic insights with Pro.</p>
                 <button
                   onClick={() => navigate('/upgrade')}
-                  className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-xl transition-colors mt-1"
+                  className="w-full py-2.5 bg-primary hover:bg-primary text-white text-sm font-semibold rounded-xl transition-colors mt-1"
                 >
                   Upgrade to Pro
                 </button>
@@ -746,19 +746,19 @@ export function SettingsPage() {
 
           <div className="space-y-2">
             <a
-              href="mailto:support@tubelinkr.com?subject=TubeLinkr%20Support%20Request"
-              className="block w-full py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-xl transition-colors text-center"
+              href="mailto:support@inlinkr.com?subject=InLinkr%20Support%20Request"
+              className="block w-full py-3 bg-primary hover:bg-primary text-white text-sm font-semibold rounded-xl transition-colors text-center"
             >
               Contact Support
             </a>
             <a
-              href="mailto:support@tubelinkr.com?subject=TubeLinkr%20Bug%20Report"
+              href="mailto:support@inlinkr.com?subject=InLinkr%20Bug%20Report"
               className="block w-full py-3 bg-gray-800 hover:bg-gray-700 text-gray-300 text-sm font-medium rounded-xl transition-colors text-center"
             >
               Report a Bug
             </a>
             <a
-              href="mailto:support@tubelinkr.com?subject=TubeLinkr%20Feature%20Request"
+              href="mailto:support@inlinkr.com?subject=InLinkr%20Feature%20Request"
               className="block w-full py-3 bg-gray-800 hover:bg-gray-700 text-gray-300 text-sm font-medium rounded-xl transition-colors text-center"
             >
               Request a Feature
@@ -767,10 +767,10 @@ export function SettingsPage() {
 
           <div className="mt-3 pt-3 border-t border-gray-800">
             <a
-              href="mailto:support@tubelinkr.com"
+              href="mailto:support@inlinkr.com"
               className="text-xs text-gray-500 hover:text-gray-400 transition-colors"
             >
-              support@tubelinkr.com
+              support@inlinkr.com
             </a>
           </div>
         </div>
@@ -779,7 +779,7 @@ export function SettingsPage() {
         <div className="bg-gray-900 border border-red-900/40 rounded-xl p-4 sm:p-5">
           <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Danger Zone</div>
           <p className="text-xs text-gray-600 mb-3">
-            Disable your TubeLinkr account and deactivate your links.
+            Disable your InLinkr account and deactivate your links.
           </p>
 
           {(() => {

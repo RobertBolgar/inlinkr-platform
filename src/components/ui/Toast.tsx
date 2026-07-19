@@ -11,16 +11,16 @@ export function Toast({ visible, variant, message }: ToastProps) {
 
   return (
     <div
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-[9999] flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium shadow-xl pointer-events-none select-none ${
+      className={`animate-ink-enter fixed top-4 left-1/2 z-[9999] flex -translate-x-1/2 items-center gap-2 rounded-xl border px-4 py-3 text-sm font-medium shadow-ink-lg pointer-events-none select-none ${
         variant === 'success'
-          ? 'bg-green-950 border border-green-700/60 text-green-300'
-          : 'bg-red-950 border border-red-700/60 text-red-300'
+          ? 'border-emerald-800/60 bg-emerald-950/95 text-emerald-200'
+          : 'border-red-800/60 bg-red-950/95 text-red-200'
       }`}
     >
       {variant === 'success' ? (
-        <CheckCircle2 className="w-4 h-4 shrink-0" />
+        <CheckCircle2 className="h-4 w-4 shrink-0" />
       ) : (
-        <XCircle className="w-4 h-4 shrink-0" />
+        <XCircle className="h-4 w-4 shrink-0" />
       )}
       <span className="whitespace-nowrap">{message}</span>
     </div>

@@ -59,8 +59,8 @@ export function CreatorImpactCard({ data, loading, error }: CreatorImpactCardPro
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'Join TubeLinkr',
-          text: 'Check out TubeLinkr - a tool for YouTube creators to manage their links and track clicks.',
+          title: 'Join InLinkr',
+          text: 'Check out InLinkr - a tool for YouTube creators to manage their links and track clicks.',
           url: data.referralUrl,
         });
       } catch (err) {
@@ -190,7 +190,7 @@ export function CreatorImpactCard({ data, loading, error }: CreatorImpactCardPro
       {/* Main emotional line */}
       <div className="mb-2">
         <p className="text-base sm:text-lg font-semibold text-white">
-          You've helped <span className="text-purple-400">{referralCount}</span> creator{referralCount !== 1 ? 's' : ''} discover TubeLinkr.
+          You've helped <span className="text-purple-400">{referralCount}</span> creator{referralCount !== 1 ? 's' : ''} discover InLinkr.
         </p>
         <p className="text-sm text-gray-500 mt-1">Thank you for helping grow the creator community.</p>
       </div>

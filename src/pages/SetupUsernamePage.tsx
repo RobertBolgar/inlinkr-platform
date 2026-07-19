@@ -152,7 +152,7 @@ export function SetupUsernamePage() {
                 required
                 value={username}
                 onChange={handleUsernameChange}
-                className="w-full px-4 py-3 bg-gray-900 border border-gray-800 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                className="w-full px-4 py-3 bg-gray-900 border border-gray-800 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 placeholder="yourname"
               />
               {username.length >= 3 && (
@@ -175,7 +175,7 @@ export function SetupUsernamePage() {
           <button
             type="submit"
             disabled={loading || !isAvailable || username.length < 3}
-            className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-medium rounded-lg transition-colors"
+            className="w-full py-3 px-4 bg-primary hover:bg-primary disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-medium rounded-lg transition-colors"
           >
             {loading ? 'Creating...' : 'Continue'}
           </button>

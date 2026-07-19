@@ -367,7 +367,7 @@ export function AdminDevPage() {
                 value={adminKey}
                 onChange={(e) => setAdminKey(e.target.value)}
                 placeholder="Enter ADMIN_TEST_KEY from environment variables"
-                className="w-full px-4 py-2 bg-[#0d1117] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-2 bg-[#0d1117] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
               />
             </div>
           </div>
@@ -543,7 +543,7 @@ export function AdminDevPage() {
                   value={founderEmail}
                   onChange={(e) => setFounderEmail(e.target.value)}
                   placeholder="user@example.com"
-                  className="w-full px-4 py-2 bg-[#1c2128] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-2 bg-[#1c2128] border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 />
               </div>
               
@@ -565,7 +565,7 @@ export function AdminDevPage() {
                   className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors ${
                     founderLoading || !adminKey || !founderEmail.trim()
                       ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                      : 'bg-blue-600 hover:bg-blue-700 text-white'
+                      : 'bg-primary hover:bg-primary text-white'
                   }`}
                 >
                   {founderLoading ? 'Granting...' : 'Grant Access'}

@@ -99,7 +99,7 @@ export function QRCodeDisplay({ url, placementName = 'QR Code', size = 200 }: QR
       <div className="flex gap-2">
         <button
           onClick={handleDownload}
-          className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm font-medium"
+          className="flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary text-white rounded-lg transition-colors text-sm font-medium"
         >
           <Download className="w-4 h-4" />
           Download PNG

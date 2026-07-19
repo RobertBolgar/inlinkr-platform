@@ -213,7 +213,7 @@ export function RewardsPage() {
                   </div>
                   <div>
                     <h1 className="text-2xl sm:text-3xl font-bold text-white leading-tight">Creator Rewards</h1>
-                    <p className="text-sm text-gray-500 mt-0.5">Unlock Pro access by inviting creators to TubeLinkr.</p>
+                    <p className="text-sm text-gray-500 mt-0.5">Unlock Pro access by inviting creators to InLinkr.</p>
                   </div>
                 </div>
 
@@ -297,7 +297,7 @@ export function RewardsPage() {
                   ? 'Build your lifetime Founder Impact.'
                   : isPro 
                   ? 'Build your Creator Impact.'
-                  : 'Unlock Pro access by inviting creators to TubeLinkr.'}
+                  : 'Unlock Pro access by inviting creators to InLinkr.'}
               </p>
             </div>
           </div>
@@ -307,14 +307,14 @@ export function RewardsPage() {
             <div className="flex items-center gap-2.5 px-4 py-3 bg-amber-900/15 border border-amber-700/30 rounded-xl mb-5">
               <div className="w-2 h-2 bg-amber-400 rounded-full flex-shrink-0" />
               <span className="text-sm text-amber-300 font-medium">
-                You've helped {qualifiedCount} creator{qualifiedCount !== 1 ? 's' : ''} discover TubeLinkr.
+                You've helped {qualifiedCount} creator{qualifiedCount !== 1 ? 's' : ''} discover InLinkr.
               </span>
             </div>
           ) : isPro ? (
             <div className="flex items-center gap-2.5 px-4 py-3 bg-blue-900/15 border border-blue-700/30 rounded-xl mb-5">
               <div className="w-2 h-2 bg-blue-400 rounded-full flex-shrink-0" />
               <span className="text-sm text-blue-300 font-medium">
-                You've helped {qualifiedCount} creator{qualifiedCount !== 1 ? 's' : ''} discover TubeLinkr.
+                You've helped {qualifiedCount} creator{qualifiedCount !== 1 ? 's' : ''} discover InLinkr.
               </span>
             </div>
           ) : isPaidPro ? (
@@ -421,8 +421,8 @@ export function RewardsPage() {
           {(isPro || isFounder) && (
             <p className="text-xs text-gray-500 mb-4">
               {isFounder
-                ? 'Founder milestones recognize the creators you\'ve helped bring into the TubeLinkr community.'
-                : 'Creator Impact milestones recognize the creators you\'ve helped discover TubeLinkr.'}
+                ? 'Founder milestones recognize the creators you\'ve helped bring into the InLinkr community.'
+                : 'Creator Impact milestones recognize the creators you\'ve helped discover InLinkr.'}
             </p>
           )}
           {!isPro && !isFounder && <div className="mb-4"></div>}
@@ -566,9 +566,9 @@ export function RewardsPage() {
         {isPaidPro && !isPro && !isFounder && (
           <div className="bg-gray-900 border border-gray-800 rounded-xl p-5 sm:p-6 text-center">
             <div className="text-3xl mb-3">💙</div>
-            <div className="text-base font-semibold text-white mb-1">Thanks for supporting TubeLinkr</div>
+            <div className="text-base font-semibold text-white mb-1">Thanks for supporting InLinkr</div>
             <div className="text-sm text-gray-500">
-              You're on a paid Pro plan. Share your referral link to help other creators discover TubeLinkr.
+              You're on a paid Pro plan. Share your referral link to help other creators discover InLinkr.
             </div>
           </div>
         )}

@@ -53,7 +53,7 @@ export function VideoProofModal({ isOpen, onClose, video, destinationUrl, attrib
 Source details unavailable`;
     }
 
-    const text = `Video proof from TubeLinkr
+    const text = `Video proof from InLinkr
 
 Video:
 ${video.title || 'Untitled Video'}
@@ -69,7 +69,7 @@ Results:
 
 ${attributionText}
 
-Tracked with TubeLinkr`;
+Tracked with InLinkr`;
 
     navigator.clipboard.writeText(text);
   };
@@ -97,7 +97,7 @@ Tracked with TubeLinkr`;
           return;
         }
 
-        const fileName = `tubelinkr-proof-${video.video_id}.png`;
+        const fileName = `inlinkr-proof-${video.video_id}.png`;
 
         // Try native share on mobile
         if (supportsNativeShare) {
@@ -106,8 +106,8 @@ Tracked with TubeLinkr`;
             
             if (navigator.canShare && navigator.canShare({ files: [file] })) {
               await navigator.share({
-                title: 'TubeLinkr video proof',
-                text: 'Video proof generated with TubeLinkr',
+                title: 'InLinkr video proof',
+                text: 'Video proof generated with InLinkr',
                 files: [file],
               });
             } else {
@@ -229,9 +229,9 @@ Tracked with TubeLinkr`;
     });
 
     try {
-      if (navigator.canShare && navigator.canShare({ title: 'TubeLinkr Proof', text: shareText, url: shareUrl })) {
+      if (navigator.canShare && navigator.canShare({ title: 'InLinkr Proof', text: shareText, url: shareUrl })) {
         await navigator.share({
-          title: 'TubeLinkr Proof',
+          title: 'InLinkr Proof',
           text: shareText,
           url: shareUrl,
         });
@@ -364,11 +364,11 @@ Tracked with TubeLinkr`;
               <div className="flex items-center gap-2">
                 <img
                   src="/tubelinkr-icon-wht.png"
-                  alt="TubeLinkr"
+                  alt="InLinkr"
                   className="w-5 h-5 rounded-lg object-contain"
                   crossOrigin="anonymous"
                 />
-                <span className="text-white font-semibold text-sm">TubeLinkr</span>
+                <span className="text-white font-semibold text-sm">InLinkr</span>
               </div>
               <div className="flex items-center gap-2">
                 {/* Snapshot date pill */}
@@ -523,7 +523,7 @@ Tracked with TubeLinkr`;
                 Snapshot captured on {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
               </p>
               <p className="text-[10px] text-center text-gray-500 mt-1">
-                Metrics locked at capture time • Verified by TubeLinkr
+                Metrics locked at capture time • Verified by InLinkr
               </p>
             </div>
           </div>
@@ -547,7 +547,7 @@ Tracked with TubeLinkr`;
               <button
                 onClick={handleDownloadImage}
                 disabled={downloading}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 sm:py-3 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 sm:py-3 bg-primary hover:bg-primary text-white text-sm font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Download className="w-4 h-4" />
                 <span className="hidden sm:inline">Save Image</span>

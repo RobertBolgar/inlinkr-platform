@@ -110,7 +110,7 @@ export function SupportPage() {
       {/* Content */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h1 className="text-3xl font-bold text-white mb-2">Support</h1>
-        <p className="text-gray-400 text-lg mb-8">Need help with TubeLinkr? We're here to help.</p>
+        <p className="text-gray-400 text-lg mb-8">Need help with InLinkr? We're here to help.</p>
 
         {/* FAQ Section */}
         <div className="mb-12">
@@ -119,14 +119,14 @@ export function SupportPage() {
             <div className="bg-gray-900 rounded-lg p-6 border border-gray-800">
               <h3 className="text-lg font-semibold text-white mb-2">How do I connect my YouTube account?</h3>
               <p className="text-gray-300">
-                To connect your YouTube account, sign in to TubeLinkr and navigate to Settings. Click "Connect YouTube" and authorize TubeLinkr to access your channel information. This allows you to associate Smart Links with your videos and view analytics.
+                To connect your YouTube account, sign in to InLinkr and navigate to Settings. Click "Connect YouTube" and authorize InLinkr to access your channel information. This allows you to associate Smart Links with your videos and view analytics.
               </p>
             </div>
 
             <div className="bg-gray-900 rounded-lg p-6 border border-gray-800">
               <h3 className="text-lg font-semibold text-white mb-2">How do Smart Links work?</h3>
               <p className="text-gray-300">
-                Smart Links are tracked links you can place in your YouTube descriptions, pinned comments, bios, and other locations. When someone clicks a Smart Link, TubeLinkr records the click and attributes it to the specific placement, allowing you to see which content drives the most engagement.
+                Smart Links are tracked links you can place in your YouTube descriptions, pinned comments, bios, and other locations. When someone clicks a Smart Link, InLinkr records the click and attributes it to the specific placement, allowing you to see which content drives the most engagement.
               </p>
             </div>
 
@@ -138,13 +138,13 @@ export function SupportPage() {
             </div>
 
             <div className="bg-gray-900 rounded-lg p-6 border border-gray-800">
-              <h3 className="text-lg font-semibold text-white mb-2">How do I revoke TubeLinkr's access to my Google account?</h3>
+              <h3 className="text-lg font-semibold text-white mb-2">How do I revoke InLinkr's access to my Google account?</h3>
               <p className="text-gray-300">
-                You can revoke TubeLinkr's access to your Google account at any time by visiting{' '}
+                You can revoke InLinkr's access to your Google account at any time by visiting{' '}
                 <a href="https://myaccount.google.com/permissions" className="text-blue-400 hover:text-blue-300" target="_blank" rel="noopener noreferrer">
                   https://myaccount.google.com/permissions
                 </a>
-                {' '}and removing TubeLinkr from the list of connected apps. This will prevent TubeLinkr from accessing your Google data going forward.
+                {' '}and removing InLinkr from the list of connected apps. This will prevent InLinkr from accessing your Google data going forward.
               </p>
             </div>
           </div>
@@ -163,7 +163,7 @@ export function SupportPage() {
                 </p>
                 <button
                   onClick={() => setSubmitSuccess(false)}
-                  className="mt-6 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors"
+                  className="mt-6 px-4 py-2 bg-primary hover:bg-primary text-white rounded-md transition-colors"
                 >
                   Send Another Message
                 </button>
@@ -190,7 +190,7 @@ export function SupportPage() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className={`w-full px-4 py-2 bg-gray-800 border rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    className={`w-full px-4 py-2 bg-gray-800 border rounded-md text-white focus:outline-none focus:ring-2 focus:ring-primary ${
                       errors.name ? 'border-red-500' : 'border-gray-700'
                     }`}
                     placeholder="Your name"
@@ -208,7 +208,7 @@ export function SupportPage() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className={`w-full px-4 py-2 bg-gray-800 border rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    className={`w-full px-4 py-2 bg-gray-800 border rounded-md text-white focus:outline-none focus:ring-2 focus:ring-primary ${
                       errors.email ? 'border-red-500' : 'border-gray-700'
                     }`}
                     placeholder="your@email.com"
@@ -225,7 +225,7 @@ export function SupportPage() {
                     name="category"
                     value={formData.category}
                     onChange={handleChange}
-                    className={`w-full px-4 py-2 bg-gray-800 border rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    className={`w-full px-4 py-2 bg-gray-800 border rounded-md text-white focus:outline-none focus:ring-2 focus:ring-primary ${
                       errors.category ? 'border-red-500' : 'border-gray-700'
                     }`}
                   >
@@ -250,7 +250,7 @@ export function SupportPage() {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className={`w-full px-4 py-2 bg-gray-800 border rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    className={`w-full px-4 py-2 bg-gray-800 border rounded-md text-white focus:outline-none focus:ring-2 focus:ring-primary ${
                       errors.subject ? 'border-red-500' : 'border-gray-700'
                     }`}
                     placeholder="Brief description of your issue"
@@ -268,7 +268,7 @@ export function SupportPage() {
                     value={formData.message}
                     onChange={handleChange}
                     rows={6}
-                    className={`w-full px-4 py-2 bg-gray-800 border rounded-md text-white focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none ${
+                    className={`w-full px-4 py-2 bg-gray-800 border rounded-md text-white focus:outline-none focus:ring-2 focus:ring-primary resize-none ${
                       errors.message ? 'border-red-500' : 'border-gray-700'
                     }`}
                     placeholder="Please describe your issue in detail (minimum 10 characters)"
@@ -279,7 +279,7 @@ export function SupportPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-medium rounded-md transition-colors"
+                  className="w-full px-4 py-3 bg-primary hover:bg-primary disabled:bg-gray-700 disabled:cursor-not-allowed text-white font-medium rounded-md transition-colors"
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>

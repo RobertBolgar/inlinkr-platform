@@ -546,7 +546,7 @@ export function DashboardPage() {
                 {/* Progress bar */}
                 <div className="h-1 bg-gray-800 rounded-full mb-2 overflow-hidden">
                   <div
-                    className="h-full bg-blue-500 rounded-full transition-all duration-300"
+                    className="h-full bg-primary rounded-full transition-all duration-300"
                     style={{ width: `${(coreCompletedCount / coreSteps.length) * 100}%` }}
                   />
                 </div>
@@ -573,7 +573,7 @@ export function DashboardPage() {
                 {ctaText && (
                   <Link
                     to={ctaLink}
-                    className="inline-block text-[10px] bg-blue-600 hover:bg-blue-700 text-white px-2.5 py-1 rounded-lg transition-colors font-medium"
+                    className="inline-block text-[10px] bg-primary hover:bg-primary text-white px-2.5 py-1 rounded-lg transition-colors font-medium"
                   >
                     {ctaText}
                   </Link>
@@ -621,7 +621,7 @@ export function DashboardPage() {
                 {/* Progress bar */}
                 <div className="h-1 bg-gray-800 rounded-full mb-2 overflow-hidden">
                   <div
-                    className="h-full bg-blue-500 rounded-full transition-all duration-300"
+                    className="h-full bg-primary rounded-full transition-all duration-300"
                     style={{ width: `${(proCompletedCount / proSteps.length) * 100}%` }}
                   />
                 </div>
@@ -648,7 +648,7 @@ export function DashboardPage() {
                 {ctaText && (
                   <Link
                     to={ctaLink}
-                    className="inline-block text-[10px] bg-blue-600 hover:bg-blue-700 text-white px-2.5 py-1 rounded-lg transition-colors font-medium"
+                    className="inline-block text-[10px] bg-primary hover:bg-primary text-white px-2.5 py-1 rounded-lg transition-colors font-medium"
                   >
                     {ctaText}
                   </Link>
@@ -1027,7 +1027,7 @@ export function DashboardPage() {
               title: l.title || l.slug,
               source: '',
               timestamp: l.created_at,
-              dot: 'bg-blue-500',
+              dot: 'bg-primary',
             }));
 
             const meaningful = byRecency(meaningfulItems);
@@ -1276,7 +1276,7 @@ export function DashboardPage() {
                 <div className="flex items-center gap-2 flex-shrink-0">
                   <Link
                     to="/rewards"
-                    className={`text-xs px-4 py-2 rounded-xl transition-colors font-semibold ${isUrgent ? 'bg-orange-600 hover:bg-orange-700 text-white' : 'bg-blue-600 hover:bg-blue-700 text-white'}`}
+                    className={`text-xs px-4 py-2 rounded-xl transition-colors font-semibold ${isUrgent ? 'bg-orange-600 hover:bg-orange-700 text-white' : 'bg-primary hover:bg-primary text-white'}`}
                   >
                     View progress
                   </Link>
@@ -1308,7 +1308,7 @@ export function DashboardPage() {
               <div className="flex items-center gap-2 flex-shrink-0">
                 <Link
                   to="/rewards"
-                  className="text-xs bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-xl transition-colors font-semibold whitespace-nowrap"
+                  className="text-xs bg-primary hover:bg-primary text-white px-3 py-2 rounded-xl transition-colors font-semibold whitespace-nowrap"
                 >
                   View progress
                 </Link>

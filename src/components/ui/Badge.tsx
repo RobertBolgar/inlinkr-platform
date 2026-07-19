@@ -55,11 +55,11 @@ export function Badge({
   size = 'sm', 
   className = '' 
 }: BadgeProps) {
-  const baseClassName = "inline-flex items-center font-medium border transition-all duration-200";
+  const baseClassName = "inline-flex items-center border font-medium leading-none transition-colors duration-200";
   
   const sizeClasses = {
-    sm: 'px-1.5 py-0.5 text-[10px] rounded',
-    md: 'px-2 py-0.5 text-[10px] rounded-md',
+    sm: 'rounded-md px-1.5 py-1 text-[10px]',
+    md: 'rounded-lg px-2 py-1 text-[10px]',
   };
   
   const variantClasses: Record<BadgeVariant, string> = {

@@ -20,7 +20,7 @@ export function SurfaceCard({ children, padding = 'md', className = '' }: Surfac
   }[padding];
 
   return (
-    <div className={`bg-gray-900 border border-gray-800/80 rounded-xl ${paddingClass} ${className}`}>
+    <div className={`rounded-xl border border-border bg-surface shadow-ink-sm transition-colors duration-200 ${paddingClass} ${className}`}>
       {children}
     </div>
   );

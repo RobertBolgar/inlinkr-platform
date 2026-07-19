@@ -46,7 +46,7 @@ export function CancelModal({ isOpen, onClose, onContinue }: CancelModalProps) {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-red-400 mt-1">•</span>
-                  <span>Branded subdomain (username.tubelinkr.com)</span>
+                  <span>Branded subdomain (username.inlinkr.com)</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-red-400 mt-1">•</span>
@@ -55,7 +55,7 @@ export function CancelModal({ isOpen, onClose, onContinue }: CancelModalProps) {
               </>
           </ul>
           <p className="text-gray-400 text-sm">
-            Your standard TubeLinkr links will continue to work.
+            Your standard Smart Links will continue to work.
           </p>
           <p className="text-gray-500 text-sm">
             You can always upgrade again anytime.
@@ -66,7 +66,7 @@ export function CancelModal({ isOpen, onClose, onContinue }: CancelModalProps) {
         <div className="space-y-3">
           <button
             onClick={onClose}
-            className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+            className="w-full px-6 py-3 bg-primary hover:bg-primary text-white font-medium rounded-lg transition-colors"
           >
             Keep my plan
           </button>

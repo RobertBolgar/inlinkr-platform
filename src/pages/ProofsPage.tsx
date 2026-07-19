@@ -116,9 +116,9 @@ export function ProofsPage() {
 
     if (typeof navigator !== 'undefined' && 'share' in navigator && 'canShare' in navigator) {
       try {
-        if (navigator.canShare({ title: 'TubeLinkr Proof', url: proofUrl })) {
+        if (navigator.canShare({ title: 'InLinkr Proof', url: proofUrl })) {
           await navigator.share({
-            title: proof.title || 'TubeLinkr Proof',
+            title: proof.title || 'InLinkr Proof',
             url: proofUrl,
           });
         }
@@ -415,7 +415,7 @@ export function ProofsPage() {
               onClick={() => setActiveTab('active')}
               className={`px-4 py-2 text-sm font-medium rounded-md transition-all ${
                 activeTab === 'active'
-                  ? 'bg-blue-600 text-white shadow-sm shadow-blue-500/20'
+                  ? 'bg-primary text-white shadow-sm shadow-blue-500/20'
                   : 'text-gray-400 hover:text-white hover:bg-gray-700/50'
               }`}
             >
@@ -470,7 +470,7 @@ export function ProofsPage() {
                 </p>
                 <Link
                   to="/links"
-                  className="inline-flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary hover:bg-primary text-white text-sm font-medium rounded-lg transition-colors"
                 >
                   Go to Links
                 </Link>

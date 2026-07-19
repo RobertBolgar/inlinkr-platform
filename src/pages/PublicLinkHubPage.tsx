@@ -118,7 +118,7 @@ export function PublicLinkHubPage() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 flex items-center justify-center">
         <div className="text-center">
-          <Loader2 className="w-8 h-8 text-blue-500 animate-spin mx-auto mb-4" />
+          <Loader2 className="w-8 h-8 text-primary animate-spin mx-auto mb-4" />
           <div className="text-gray-400">Loading hub...</div>
         </div>
       </div>
@@ -137,7 +137,7 @@ export function PublicLinkHubPage() {
             </p>
             <a
               href="https://tubelinkr.com"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl transition-all duration-200 hover:scale-105"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary text-white font-medium rounded-xl transition-all duration-200 hover:scale-105"
             >
               Visit TubeLinkr
             </a>
@@ -331,7 +331,7 @@ export function PublicLinkHubPage() {
                       <div className="relative h-full flex flex-col justify-end p-5 md:p-10">
                         <div className="max-w-full">
                           {/* Video Badge */}
-                          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-600/95 backdrop-blur-md rounded-full mb-4 md:mb-5 shadow-xl shadow-blue-500/20">
+                          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/95 backdrop-blur-md rounded-full mb-4 md:mb-5 shadow-xl shadow-blue-500/20">
                             <Play className="w-4 h-4 text-white" />
                             <span className="text-white text-xs font-semibold tracking-wide">VIDEO</span>
                           </div>
@@ -350,7 +350,7 @@ export function PublicLinkHubPage() {
 
                           {/* CTAs */}
                           <div className="flex flex-wrap items-center gap-3">
-                            <span className="inline-flex items-center gap-2 px-6 py-3 md:px-7 md:py-3.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold rounded-xl transition-all duration-[250ms] ease-[cubic-bezier(0.19,1,0.22,1)] hover:scale-105 shadow-xl shadow-blue-500/30 hover:shadow-blue-500/50">
+                            <span className="inline-flex items-center gap-2 px-6 py-3 md:px-7 md:py-3.5 bg-primary hover:bg-primary text-white text-sm font-semibold rounded-xl transition-all duration-[250ms] ease-[cubic-bezier(0.19,1,0.22,1)] hover:scale-105 shadow-xl shadow-blue-500/30 hover:shadow-blue-500/50">
                               <Play className="w-4 h-4" />
                               {displayCta}
                             </span>
@@ -425,7 +425,7 @@ export function PublicLinkHubPage() {
                           <div className="max-w-full">
                             {/* Video Badge */}
                             {isVideo && (
-                              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-600/95 backdrop-blur-md rounded-full mb-4 md:mb-5 shadow-xl shadow-blue-500/20">
+                              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/95 backdrop-blur-md rounded-full mb-4 md:mb-5 shadow-xl shadow-blue-500/20">
                                 <Play className="w-4 h-4 text-white" />
                                 <span className="text-white text-xs font-semibold tracking-wide">VIDEO</span>
                               </div>
@@ -445,7 +445,7 @@ export function PublicLinkHubPage() {
 
                             {/* CTAs */}
                             <div className="flex flex-wrap items-center gap-3">
-                              <span className="inline-flex items-center gap-2 px-6 py-3 md:px-7 md:py-3.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold rounded-xl transition-all duration-[250ms] ease-[cubic-bezier(0.19,1,0.22,1)] hover:scale-105 shadow-xl shadow-blue-500/30 hover:shadow-blue-500/50">
+                              <span className="inline-flex items-center gap-2 px-6 py-3 md:px-7 md:py-3.5 bg-primary hover:bg-primary text-white text-sm font-semibold rounded-xl transition-all duration-[250ms] ease-[cubic-bezier(0.19,1,0.22,1)] hover:scale-105 shadow-xl shadow-blue-500/30 hover:shadow-blue-500/50">
                                 <ExternalLink className="w-4 h-4" />
                                 {displayCta}
                               </span>
@@ -786,7 +786,7 @@ export function PublicLinkHubPage() {
               rel="noopener noreferrer"
               className="text-blue-400 hover:text-blue-300 font-medium transition-colors"
             >
-              TubeLinkr Creator Hubs
+              InLinkr Creator Hubs
             </a>
           </p>
         </div>

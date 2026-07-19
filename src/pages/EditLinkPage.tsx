@@ -504,7 +504,7 @@ export function EditLinkPage() {
                 onChange={handleSlugChange}
                 autoComplete="off"
                 spellCheck="false"
-                className="flex-1 min-w-0 px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-r-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/60 focus:border-blue-600 text-sm transition-all"
+                className="flex-1 min-w-0 px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-r-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary text-sm transition-all"
                 placeholder="my-link"
               />
             </div>

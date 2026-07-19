@@ -511,7 +511,7 @@ export function NewLinkPage() {
 
         // Require placement selection for attach mode
         if (selectedPlacements.length === 0) {
-          setError('Choose a placement so TubeLinkr can create a unique Smart Link for this video.');
+          setError('Choose a placement so InLinkr can create a unique Smart Link for this video.');
           return;
         }
 
@@ -700,7 +700,7 @@ export function NewLinkPage() {
                   {createdLink.createdPlacements.length === 1 ? 'Your placement link' : 'Your placement links'}
                 </div>
                 <p className="text-xs text-gray-600 mb-3">
-                  Use the placement link where you selected it so TubeLinkr can attribute the click correctly.
+                  Use the placement link where you selected it so InLinkr can attribute the click correctly.
                 </p>
                 {createdLink.createdPlacements.map((placement, index) => {
                   const placementUrl = buildSmartLinkUrl({ slug: createdLink.slug, publicCode: createdLink.public_code, username: user?.username, placementCode: placement.public_code }, user);
@@ -720,7 +720,7 @@ export function NewLinkPage() {
                               console.error('Failed to copy link:', err);
                             }
                           }}
-                          className="flex-1 flex items-center justify-center gap-2 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"
+                          className="flex-1 flex items-center justify-center gap-2 py-2 bg-primary hover:bg-primary text-white text-sm font-medium rounded-lg transition-colors"
                         >
                           {copiedPlacementKey === placement.public_code ? <><Check className="w-4 h-4" /> Copied!</> : <><Copy className="w-4 h-4" /> Copy {placement.name} link</>}
                         </button>
@@ -751,7 +751,7 @@ export function NewLinkPage() {
               {(!createdLink?.createdPlacements || createdLink.createdPlacements.length === 0) && (
                 <button
                   onClick={copyLinkToClipboard}
-                  className="w-full flex items-center justify-center gap-2 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"
+                  className="w-full flex items-center justify-center gap-2 py-2 bg-primary hover:bg-primary text-white text-sm font-medium rounded-lg transition-colors"
                 >
                   {copiedPlacementKey === 'main' ? <><Check className="w-4 h-4" /> Copied!</> : <><Copy className="w-4 h-4" /> Copy link</>}
                 </button>
@@ -812,7 +812,7 @@ export function NewLinkPage() {
               {createdLink && (
                 <button
                   onClick={() => navigate(`/links/${createdLink.id}/placements`)}
-                  className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"
+                  className="flex-1 py-2.5 bg-primary hover:bg-primary text-white text-sm font-medium rounded-lg transition-colors"
                 >
                   Add placement
                 </button>
@@ -836,7 +836,7 @@ export function NewLinkPage() {
                 onClick={() => setMode('create')}
                 className={`flex-1 py-2 px-3 sm:px-4 rounded-lg text-xs sm:text-sm font-medium transition-all ${
                   mode === 'create'
-                    ? 'bg-blue-600 text-white shadow-sm'
+                    ? 'bg-primary text-white shadow-sm'
                     : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800'
                 }`}
               >
@@ -847,7 +847,7 @@ export function NewLinkPage() {
                 onClick={() => setMode('attach')}
                 className={`flex-1 py-2 px-3 sm:px-4 rounded-lg text-xs sm:text-sm font-medium transition-all ${
                   mode === 'attach'
-                    ? 'bg-blue-600 text-white shadow-sm'
+                    ? 'bg-primary text-white shadow-sm'
                     : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800'
                 }`}
               >
@@ -861,13 +861,13 @@ export function NewLinkPage() {
               {mode === 'attach' && (
                 <div className="bg-gray-900 border border-gray-800 rounded-xl p-4">
                   <label htmlFor="existingLink" className="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">
-                    Select Destination Link <span className="text-blue-500">*</span>
+                    Select Destination Link <span className="text-primary">*</span>
                   </label>
                   <select
                     id="existingLink"
                     value={selectedExistingLinkId}
                     onChange={(e) => setSelectedExistingLinkId(e.target.value)}
-                    className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500/60 focus:border-blue-600 transition-all text-sm"
+                    className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary transition-all text-sm"
                     required
                   >
                     <option value="">Choose a link...</option>
@@ -889,7 +889,7 @@ export function NewLinkPage() {
               {mode === 'create' && (
                 <div className="bg-gray-900 border border-gray-800 rounded-xl p-3 sm:p-4">
                   <label htmlFor="originalUrl" className="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">
-                    Destination URL <span className="text-blue-500">*</span>
+                    Destination URL <span className="text-primary">*</span>
                   </label>
                   <input
                     type="url"
@@ -897,7 +897,7 @@ export function NewLinkPage() {
                     value={originalUrl}
                     onChange={(e) => setOriginalUrl(e.target.value)}
                     placeholder="https://example.com/your-content"
-                    className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/60 focus:border-blue-600 transition-all text-sm"
+                    className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary transition-all text-sm"
                     required
                   />
                   <div className="mt-3 flex items-center gap-3">
@@ -949,7 +949,7 @@ export function NewLinkPage() {
                       value={title}
                       onChange={handleTitleChange}
                       placeholder="My Awesome Link"
-                      className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/60 focus:border-blue-600 text-sm transition-all"
+                      className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary text-sm transition-all"
                     />
                   </div>
 
@@ -964,7 +964,7 @@ export function NewLinkPage() {
                       onChange={(e) => setSubtitle(e.target.value)}
                       placeholder="See the full walkthrough before you continue."
                       rows={2}
-                      className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/60 focus:border-blue-600 text-sm transition-all resize-none"
+                      className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary text-sm transition-all resize-none"
                     />
                   </div>
                 </div>
@@ -990,7 +990,7 @@ export function NewLinkPage() {
                         spellCheck="false"
                         placeholder="my-link"
                         className={`flex-1 min-w-0 px-3 py-2.5 bg-gray-950 border rounded-r-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:border-transparent text-sm font-mono transition-all ${
-                          slugError ? 'border-red-500/70 focus:ring-red-500/40' : 'border-gray-700 focus:ring-blue-500/60'
+                          slugError ? 'border-red-500/70 focus:ring-red-500/40' : 'border-gray-700 focus:ring-primary/60'
                         }`}
                       />
                     </div>
@@ -1045,7 +1045,7 @@ export function NewLinkPage() {
                         onClick={() => togglePlacement(option.value)}
                         className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border transition-all ${
                           isSelected
-                            ? 'bg-blue-600/20 border-blue-500/60 text-blue-300 shadow-[0_0_0_1px_rgba(59,130,246,0.3)]'
+                            ? 'bg-primary/20 border-blue-500/60 text-blue-300 shadow-[0_0_0_1px_rgba(59,130,246,0.3)]'
                             : 'bg-gray-800/60 border-gray-700/60 text-gray-400 hover:text-gray-200 hover:border-gray-600 hover:bg-gray-700/60'
                         }`}
                       >
@@ -1065,7 +1065,7 @@ export function NewLinkPage() {
                       value={customPlacement}
                       onChange={(e) => setCustomPlacement(e.target.value)}
                       placeholder="Custom placement name"
-                      className="w-full px-3 py-2 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/60 focus:border-blue-600 text-sm transition-all"
+                      className="w-full px-3 py-2 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary text-sm transition-all"
                     />
                   </div>
                 )}
@@ -1156,7 +1156,7 @@ export function NewLinkPage() {
                   {!userHasProAccess && nonSystemLinks.length >= 5 && (
                     <button
                       onClick={() => navigate('/upgrade')}
-                      className="mt-2 px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-lg transition-colors"
+                      className="mt-2 px-4 py-1.5 bg-primary hover:bg-primary text-white text-xs font-medium rounded-lg transition-colors"
                     >
                       Upgrade to Pro
                     </button>
@@ -1176,7 +1176,7 @@ export function NewLinkPage() {
                 <button
                   type="submit"
                   disabled={loading || (!userHasProAccess && nonSystemLinks.length >= 5)}
-                  className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-xl transition-colors"
+                  className="flex-1 py-3 bg-primary hover:bg-primary disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-xl transition-colors"
                 >
                   {loading ? (
                     <span className="flex items-center justify-center gap-2">

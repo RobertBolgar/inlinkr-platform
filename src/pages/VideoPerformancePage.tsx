@@ -153,7 +153,7 @@ export function VideoPerformancePage() {
             <p className="text-gray-400 mb-6">{error || 'This video may not exist or you may not have access to it.'}</p>
             <button
               onClick={() => navigate('/analytics')}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary text-white text-sm font-medium rounded-lg transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               Back to Analytics
@@ -318,7 +318,7 @@ export function VideoPerformancePage() {
                           setProofModalAdditionalSources(additionalSourceLabels);
                           setProofModalAttributionAvailable(convertingPlacements.length > 0);
                         }}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white text-sm rounded-lg transition-colors"
+                        className="inline-flex items-center gap-1 px-3 py-1.5 bg-primary hover:bg-primary text-white text-sm rounded-lg transition-colors"
                       >
                         Share Proof
                       </button>
@@ -378,7 +378,7 @@ export function VideoPerformancePage() {
             <p className="text-gray-400 mb-4">Create proofs from the Smart Links above. Manage and share all proofs from My Proofs.</p>
             <Link
               to="/proofs"
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary hover:bg-primary text-white text-sm font-medium rounded-lg transition-colors"
             >
               View My Proofs
             </Link>

@@ -19,9 +19,9 @@ export function Textarea({
   id,
   ...props 
 }: TextareaProps) {
-  const baseClassName = "px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/60 focus:border-blue-600 text-sm transition-all resize-none";
+  const baseClassName = "min-h-24 rounded-lg border border-border bg-background px-3.5 py-2.5 text-sm text-text placeholder:text-text-subtle transition-all duration-200 focus:border-primary focus:outline-none focus:ring-0 resize-none";
   const widthClass = fullWidth ? 'w-full' : '';
-  const errorClass = error ? 'border-red-700 focus:ring-red-500/60 focus:border-red-600' : '';
+  const errorClass = error ? 'border-red-500/70 focus:border-red-500' : '';
   
   return (
     <div className={fullWidth ? 'w-full' : ''}>

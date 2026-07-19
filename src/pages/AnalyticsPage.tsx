@@ -408,12 +408,12 @@ export function AnalyticsPage() {
           <div className="bg-gray-900 border border-gray-800/80 rounded-xl p-5 sm:p-6 text-center">
             <h2 className="text-sm sm:text-base font-semibold text-white mb-2">No engagement data yet</h2>
             <p className="text-sm text-gray-400 mb-5 max-w-md mx-auto">
-              Once your Smart Links are shared, TubeLinkr will show which videos and placements actually drive engagement.
+              Once your Smart Links are shared, InLinkr will show which videos and placements actually drive engagement.
             </p>
             <div className="flex items-center justify-center gap-3 mb-6">
               <a
                 href="/links/new"
-                className="inline-flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary hover:bg-primary text-white text-sm font-medium rounded-lg transition-colors"
               >
                 Create Smart Link
               </a>
@@ -865,7 +865,7 @@ export function AnalyticsPage() {
                           setAllVideosSearch(e.target.value);
                           setAllVideosPage(1);
                         }}
-                        className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm placeholder-gray-500 focus:outline-none focus:border-blue-500"
+                        className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm placeholder-gray-500 focus:outline-none focus:border-primary"
                       />
                     </div>
                     <select
@@ -874,7 +874,7 @@ export function AnalyticsPage() {
                         setAllVideosSort(e.target.value as 'clicks' | 'views' | 'newest');
                         setAllVideosPage(1);
                       }}
-                      className="px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-blue-500"
+                      className="px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-primary"
                     >
                       <option value="clicks">Most clicks</option>
                       <option value="views">Most views</option>

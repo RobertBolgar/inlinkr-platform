@@ -354,7 +354,7 @@ export function HubSettingsPage() {
             {user?.subdomain && (
               <button
                 onClick={() => window.location.href = `/hub/${user.subdomain}`}
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"
+                className="px-4 py-2 bg-primary hover:bg-primary text-white text-sm font-medium rounded-lg transition-colors"
               >
                 View Public Hub
               </button>
@@ -376,7 +376,7 @@ export function HubSettingsPage() {
                 onChange={(e) => setHubSettings({ ...hubSettings, creator_tagline: e.target.value })}
                 disabled={hubLoading}
                 maxLength={120}
-                className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/60 focus:border-blue-600 disabled:opacity-50 text-sm transition-all"
+                className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary disabled:opacity-50 text-sm transition-all"
                 placeholder="e.g., Tech creator & educator"
               />
               <p className="mt-1 text-xs text-gray-600">{(hubSettings?.creator_tagline || '').length}/120 characters</p>
@@ -391,7 +391,7 @@ export function HubSettingsPage() {
                 disabled={hubLoading}
                 maxLength={240}
                 rows={2}
-                className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/60 focus:border-blue-600 disabled:opacity-50 text-sm transition-all resize-none"
+                className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary disabled:opacity-50 text-sm transition-all resize-none"
                 placeholder="Brief description of your content and what you offer"
               />
               <p className="mt-1 text-xs text-gray-600">{(hubSettings?.creator_bio || '').length}/240</p>
@@ -416,7 +416,7 @@ export function HubSettingsPage() {
                   value={hubSettings?.featured_video_id || ''}
                   onChange={(e) => setHubSettings({ ...hubSettings, featured_video_id: e.target.value || null })}
                   disabled={hubLoading}
-                  className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500/60 focus:border-blue-600 disabled:opacity-50 text-sm transition-all"
+                  className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary disabled:opacity-50 text-sm transition-all"
                 >
                   <option value="">No featured video</option>
                   {youtubeVideos.map((video) => (
@@ -438,7 +438,7 @@ export function HubSettingsPage() {
                 onChange={(e) => setHubSettings({ ...hubSettings, featured_title_override: e.target.value })}
                 disabled={hubLoading}
                 maxLength={120}
-                className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/60 focus:border-blue-600 disabled:opacity-50 text-sm transition-all"
+                className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary disabled:opacity-50 text-sm transition-all"
                 placeholder="Override the featured link title"
               />
               <p className="mt-1 text-xs text-gray-600">{(hubSettings?.featured_title_override || '').length}/120 characters</p>
@@ -453,7 +453,7 @@ export function HubSettingsPage() {
                 disabled={hubLoading}
                 maxLength={240}
                 rows={2}
-                className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/60 focus:border-blue-600 disabled:opacity-50 text-sm transition-all resize-none"
+                className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary disabled:opacity-50 text-sm transition-all resize-none"
                 placeholder="Override the featured link description"
               />
               <p className="mt-1 text-xs text-gray-600">{(hubSettings?.featured_description_override || '').length}/240 characters</p>
@@ -468,7 +468,7 @@ export function HubSettingsPage() {
                 onChange={(e) => setHubSettings({ ...hubSettings, featured_cta_text: e.target.value })}
                 disabled={hubLoading}
                 maxLength={40}
-                className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/60 focus:border-blue-600 disabled:opacity-50 text-sm transition-all"
+                className="w-full px-4 py-2.5 bg-gray-950 border border-gray-700 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary disabled:opacity-50 text-sm transition-all"
                 placeholder="e.g., Watch Now, Explore, Learn More"
               />
               <p className="mt-1 text-xs text-gray-600">{(hubSettings?.featured_cta_text || '').length}/40 characters</p>
@@ -503,7 +503,7 @@ export function HubSettingsPage() {
                       onChange={(e) => updateSection(slot, 'label', e.target.value)}
                       disabled={sectionsLoading}
                       maxLength={40}
-                      className="w-full px-2 py-1.5 bg-gray-950 border border-gray-700 rounded-md text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/60 focus:border-blue-600 disabled:opacity-50 text-xs transition-all"
+                      className="w-full px-2 py-1.5 bg-gray-950 border border-gray-700 rounded-md text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary disabled:opacity-50 text-xs transition-all"
                       placeholder="Tools"
                     />
                   </div>
@@ -516,7 +516,7 @@ export function HubSettingsPage() {
                       onChange={(e) => updateSection(slot, 'slug', sanitizeSlugForTyping(e.target.value))}
                       disabled={sectionsLoading}
                       maxLength={40}
-                      className="w-full px-2 py-1.5 bg-gray-950 border border-gray-700 rounded-md text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500/60 focus:border-blue-600 disabled:opacity-50 text-xs transition-all"
+                      className="w-full px-2 py-1.5 bg-gray-950 border border-gray-700 rounded-md text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary disabled:opacity-50 text-xs transition-all"
                       placeholder="tools"
                     />
                   </div>
@@ -528,7 +528,7 @@ export function HubSettingsPage() {
                       checked={section.is_enabled !== 0}
                       onChange={(e) => updateSection(slot, 'is_enabled', e.target.checked ? 1 : 0)}
                       disabled={sectionsLoading}
-                      className="w-4 h-4 rounded border-gray-700 bg-gray-950 text-blue-600 focus:ring-blue-600 focus:ring-offset-gray-900"
+                      className="w-4 h-4 rounded border-gray-700 bg-gray-950 text-primary focus:ring-primary focus:ring-offset-gray-900"
                     />
                   </div>
                 </div>
@@ -551,7 +551,7 @@ export function HubSettingsPage() {
               type="button"
               onClick={handleSaveSections}
               disabled={sectionsLoading}
-              className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-lg transition-colors"
+              className="w-full py-2.5 bg-primary hover:bg-primary disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-lg transition-colors"
             >
               {sectionsLoading ? 'Saving...' : 'Save Sections'}
             </button>
@@ -561,7 +561,7 @@ export function HubSettingsPage() {
         {/* ── CARD: Hub Resources ── */}
         <div className="bg-gray-900 border border-gray-800 rounded-xl p-4 sm:p-5">
           <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Hub Resources</div>
-          <p className="text-xs text-gray-600 mb-3">Assign your existing TubeLinkr links to Creator Hub sections.</p>
+          <p className="text-xs text-gray-600 mb-3">Assign your existing links to Creator Hub sections.</p>
           <p className="text-xs text-gray-500 mb-3">Video links appear automatically in More Videos. Resource sections are for non-video links.</p>
 
           {hasUnsavedChanges && (
@@ -599,7 +599,7 @@ export function HubSettingsPage() {
                       }
                     }}
                     disabled={assignmentsLoading}
-                    className="px-2 py-1.5 bg-gray-950 border border-gray-700 rounded-md text-white text-xs focus:outline-none focus:ring-2 focus:ring-blue-500/60 focus:border-blue-600 disabled:opacity-50 transition-all"
+                    className="px-2 py-1.5 bg-gray-950 border border-gray-700 rounded-md text-white text-xs focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary disabled:opacity-50 transition-all"
                   >
                     <option value="">Add Link</option>
                     {assignableLinks
@@ -649,7 +649,7 @@ export function HubSettingsPage() {
               type="button"
               onClick={handleSaveAssignments}
               disabled={assignmentsLoading || !hasUnsavedChanges}
-              className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-lg transition-colors"
+              className="w-full py-2.5 bg-primary hover:bg-primary disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-lg transition-colors"
             >
               {assignmentsLoading ? 'Saving...' : 'Save Resource Assignments'}
             </button>
@@ -668,7 +668,7 @@ export function HubSettingsPage() {
                 checked={hubSettings?.show_metrics !== 0}
                 onChange={(e) => setHubSettings({ ...hubSettings, show_metrics: e.target.checked ? 1 : 0 })}
                 disabled={hubLoading}
-                className="w-4 h-4 rounded border-gray-700 bg-gray-950 text-blue-600 focus:ring-blue-600 focus:ring-offset-gray-900"
+                className="w-4 h-4 rounded border-gray-700 bg-gray-950 text-primary focus:ring-primary focus:ring-offset-gray-900"
               />
               <label htmlFor="showMetrics" className="text-sm text-gray-300">Show metrics strip on public hub</label>
             </div>
@@ -690,7 +690,7 @@ export function HubSettingsPage() {
                   <div className="flex items-center gap-2 ml-3">
                     <button
                       onClick={() => window.location.href = `/hub/${user.subdomain}`}
-                      className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium rounded-lg transition-colors"
+                      className="px-3 py-1.5 bg-primary hover:bg-primary text-white text-xs font-medium rounded-lg transition-colors"
                     >
                       View
                     </button>
@@ -752,7 +752,7 @@ export function HubSettingsPage() {
               type="button"
               onClick={handleSaveHubSettings}
               disabled={hubLoading}
-              className="w-full py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-xl transition-colors"
+              className="w-full py-3 bg-primary hover:bg-primary disabled:bg-gray-700 disabled:cursor-not-allowed text-white text-sm font-semibold rounded-xl transition-colors"
             >
               {hubLoading ? 'Saving...' : 'Save Hub Settings'}
             </button>

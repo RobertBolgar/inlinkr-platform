@@ -372,7 +372,7 @@ export function LinksPage() {
             </button>
             <Link
               to="/links/new"
-              className="flex items-center justify-center gap-1.5 px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors whitespace-nowrap"
+              className="flex items-center justify-center gap-1.5 px-4 py-1.5 bg-primary hover:bg-primary text-white text-sm font-medium rounded-lg transition-colors whitespace-nowrap"
             >
               <Plus className="w-4 h-4" />
               Create Smart Link
@@ -408,7 +408,7 @@ export function LinksPage() {
                 </p>
                 <Link
                   to="/links/new"
-                  className="inline-flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary hover:bg-primary text-white text-sm font-medium rounded-lg transition-colors"
                 >
                   <Plus className="w-4 h-4" />
                   Create your first Smart Link
@@ -432,7 +432,7 @@ export function LinksPage() {
                     onClick={() => handleTabChange('active')}
                     className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                       activeTab === 'active'
-                        ? 'bg-blue-600 text-white shadow-sm'
+                        ? 'bg-primary text-white shadow-sm'
                         : 'text-gray-400 hover:text-white hover:bg-gray-700/50'
                     }`}
                   >
@@ -442,7 +442,7 @@ export function LinksPage() {
                     onClick={() => handleTabChange('archived')}
                     className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
                       activeTab === 'archived'
-                        ? 'bg-blue-600 text-white shadow-sm'
+                        ? 'bg-primary text-white shadow-sm'
                         : 'text-gray-400 hover:text-white hover:bg-gray-700/50'
                     }`}
                   >
@@ -487,7 +487,7 @@ export function LinksPage() {
                                 onClick={() => setActivePage(page)}
                                 className={`w-8 h-8 text-sm font-medium rounded-lg transition-colors ${
                                   currentPage === page
-                                    ? 'bg-blue-600 text-white'
+                                    ? 'bg-primary text-white'
                                     : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
                                 }`}
                               >
@@ -558,7 +558,7 @@ export function LinksPage() {
                                 onClick={() => setArchivedPage(page)}
                                 className={`w-8 h-8 text-sm font-medium rounded-lg transition-colors ${
                                   currentPage === page
-                                    ? 'bg-blue-600 text-white'
+                                    ? 'bg-primary text-white'
                                     : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
                                 }`}
                               >

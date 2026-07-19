@@ -15,7 +15,7 @@ export function PageContainer({ children, size = 'narrow', className = '' }: Pag
   const maxWidthClass = size === 'wide' ? 'max-w-7xl' : 'max-w-2xl';
   
   return (
-    <div className={`${maxWidthClass} mx-auto px-4 py-6 sm:py-8 sm:px-6 overflow-x-hidden space-y-5 ${className}`}>
+    <div className={`${maxWidthClass} mx-auto space-y-6 overflow-x-hidden px-4 py-5 sm:px-6 sm:py-7 lg:px-8 ${className}`}>
       {children}
     </div>
   );

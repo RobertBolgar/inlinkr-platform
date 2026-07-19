@@ -13,11 +13,11 @@ export function QRCodeTrackingPage() {
 
   useEffect(() => {
     // Update page metadata
-    document.title = 'QR Code Tracking for QRLinkr Users | TubeLinkr';
-    updateMetaTag('og:title', 'QR Code Tracking for QRLinkr Users | TubeLinkr');
-    updateMetaTag('og:description', 'Create a free QR code with QRLinkr, then use TubeLinkr Smart Links to track QR traffic, clicks, placements, and Traffic Proof.');
-    updateMetaTag('twitter:title', 'QR Code Tracking for QRLinkr Users | TubeLinkr');
-    updateMetaTag('twitter:description', 'Create a free QR code with QRLinkr, then use TubeLinkr Smart Links to track QR traffic, clicks, placements, and Traffic Proof.');
+    document.title = 'QR Code Tracking for QRLinkr Users | InLinkr';
+    updateMetaTag('og:title', 'QR Code Tracking for QRLinkr Users | InLinkr');
+    updateMetaTag('og:description', 'Create a free QR code with QRLinkr, then use InLinkr Smart Links to track QR traffic, clicks, placements, and Traffic Proof.');
+    updateMetaTag('twitter:title', 'QR Code Tracking for QRLinkr Users | InLinkr');
+    updateMetaTag('twitter:description', 'Create a free QR code with QRLinkr, then use InLinkr Smart Links to track QR traffic, clicks, placements, and Traffic Proof.');
     updateCanonicalTag('/qr-code-tracking');
 
     // Add FAQ schema
@@ -27,10 +27,10 @@ export function QRCodeTrackingPage() {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Do I need TubeLinkr to use QRLinkr?",
+          "name": "Do I need InLinkr to use QRLinkr?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. QRLinkr is free and works on its own. TubeLinkr is for users who want tracking, Smart Links, and Traffic Proof."
+            "text": "No. QRLinkr is free and works on its own. InLinkr is for users who want tracking, Smart Links, and Traffic Proof."
           }
         },
         {
@@ -38,7 +38,7 @@ export function QRCodeTrackingPage() {
           "name": "How does QR tracking work?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Instead of putting your final destination directly into the QR code, you put a TubeLinkr Smart Link in the QR code. TubeLinkr records visits and clicks to the Smart Link, then sends visitors to the destination."
+            "text": "Instead of putting your final destination directly into the QR code, you put a InLinkr Smart Link in the QR code. InLinkr records visits and clicks to the Smart Link, then sends visitors to the destination."
           }
         },
         {
@@ -79,7 +79,7 @@ export function QRCodeTrackingPage() {
   }, []);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText('go.tubelinkr.com/qr-demo');
+    navigator.clipboard.writeText('go-dev.inlinkr.com/qr-demo');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -110,13 +110,13 @@ export function QRCodeTrackingPage() {
               Track What Happens After Someone Scans Your QR Code.
             </h1>
             <p className="text-lg sm:text-xl text-gray-400 leading-relaxed">
-              QRLinkr helps you create the QR code. TubeLinkr helps you track the traffic behind it. Create a Smart Link, place it inside your QR code, and see visits, clicks, placements, and proof.
+              QRLinkr helps you create the QR code. InLinkr helps you track the traffic behind it. Create a Smart Link, place it inside your QR code, and see visits, clicks, placements, and proof.
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start pt-2">
               <Link
                 to="/signup"
                 onClick={handleStartFreeClick}
-                className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors text-center"
+                className="px-8 py-3 bg-primary hover:bg-primary text-white font-medium rounded-lg transition-colors text-center"
               >
                 Start Free
               </Link>
@@ -139,7 +139,7 @@ export function QRCodeTrackingPage() {
               <div className="flex items-center justify-center gap-2 text-xs text-gray-500">
                 <span className="px-2 py-1 bg-orange-500/10 border border-orange-500/20 text-orange-400 rounded-md">QRLinkr QR Code</span>
                 <ArrowRight className="w-3 h-3" />
-                <span className="px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-400 rounded-md">TubeLinkr Smart Link</span>
+                <span className="px-2 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-400 rounded-md">InLinkr Smart Link</span>
                 <ArrowRight className="w-3 h-3" />
                 <span className="px-2 py-1 bg-green-500/10 border border-green-500/20 text-green-400 rounded-md">Traffic Proof</span>
               </div>
@@ -152,7 +152,7 @@ export function QRCodeTrackingPage() {
               
                 <div className="bg-gray-950 border border-blue-900/60 rounded-lg px-4 py-3 mb-4">
                 <div className="text-sm text-blue-400 font-mono flex items-center justify-between">
-                  <span>go.tubelinkr.com/qr-demo</span>
+                  <span>go-dev.inlinkr.com/qr-demo</span>
                   <button onClick={handleCopy} className="flex items-center gap-1 text-gray-500 hover:text-gray-300 transition-colors cursor-pointer">
                     {copied ? <Check className="w-4 h-4 text-green-400" /> : <ArrowRight className="w-4 h-4" />}
                   </button>
@@ -211,7 +211,7 @@ export function QRCodeTrackingPage() {
               A QR code can send traffic. It cannot explain traffic.
             </h2>
             <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-              Most free QR codes send people directly to a website or message. That works, but once the code is printed, shared, or posted, you have no easy way to know whether people scanned it, which placement performed best, or whether the traffic actually clicked through. TubeLinkr tracks traffic when the QR code uses a TubeLinkr Smart Link as the destination.
+              Most free QR codes send people directly to a website or message. That works, but once the code is printed, shared, or posted, you have no easy way to know whether people scanned it, which placement performed best, or whether the traffic actually clicked through. InLinkr tracks traffic when the QR code uses an InLinkr Smart Link as the destination.
             </p>
           </div>
 
@@ -232,7 +232,7 @@ export function QRCodeTrackingPage() {
               </div>
               <h3 className="text-lg font-semibold text-white mb-3">No placement comparison</h3>
               <p className="text-sm text-gray-400 leading-relaxed">
-                A flyer, sign, table card, and business card may all use the same link. TubeLinkr helps you separate performance.
+                A flyer, sign, table card, and business card may all use the same link. InLinkr helps you separate performance.
               </p>
             </div>
 
@@ -248,11 +248,11 @@ export function QRCodeTrackingPage() {
           </div>
         </div>
 
-        {/* Section 2: How TubeLinkr fits with QRLinkr */}
+        {/* Section 2: How InLinkr fits with QRLinkr */}
         <div className="mb-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Use QRLinkr for the code. Use TubeLinkr for the tracking.
+              Use QRLinkr for the code. Use InLinkr for the tracking.
             </h2>
           </div>
 
@@ -262,11 +262,11 @@ export function QRCodeTrackingPage() {
               <div className="hidden lg:block absolute left-5 top-10 bottom-10 w-0.5 bg-gradient-to-b from-blue-600 via-orange-500 to-blue-600 opacity-30" />
               
               <div className="flex items-start gap-4 relative">
-                <div className="flex-shrink-0 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold z-10">
+                <div className="flex-shrink-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold z-10">
                   1
                 </div>
                 <div className="flex-1 bg-gray-900/60 border border-gray-800/60 rounded-xl p-6">
-                  <h3 className="text-lg font-semibold text-white mb-2">Create a Smart Link in TubeLinkr</h3>
+                  <h3 className="text-lg font-semibold text-white mb-2">Create a Smart Link in InLinkr</h3>
                   <p className="text-sm text-gray-400">
                     Use a short, reusable link that can route traffic to your destination.
                   </p>
@@ -286,13 +286,13 @@ export function QRCodeTrackingPage() {
               </div>
 
               <div className="flex items-start gap-4 relative">
-                <div className="flex-shrink-0 w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold z-10">
+                <div className="flex-shrink-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold z-10">
                   3
                 </div>
                 <div className="flex-1 bg-gray-900/60 border border-gray-800/60 rounded-xl p-6">
                   <h3 className="text-lg font-semibold text-white mb-2">Track the results</h3>
                   <p className="text-sm text-gray-400">
-                    See visits, clicks, placements, and proof from your TubeLinkr dashboard.
+                    See visits, clicks, placements, and proof from your InLinkr dashboard.
                   </p>
                 </div>
               </div>
@@ -333,20 +333,20 @@ export function QRCodeTrackingPage() {
         <div className="mb-20">
           <div className="bg-gradient-to-br from-gray-900 to-gray-950 border border-gray-800 rounded-xl p-8 sm:p-12 text-center">
             <div className="flex justify-center mb-6">
-              <div className="w-16 h-16 bg-blue-600/20 rounded-full flex items-center justify-center">
-                <TrendingUp className="w-8 h-8 text-blue-500" />
+              <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center">
+                <TrendingUp className="w-8 h-8 text-primary" />
               </div>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
               Show proof when your QR campaign works.
             </h2>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-8">
-              TubeLinkr does more than count clicks. Traffic Proof creates a timestamped snapshot you can save or share, so you can show that a QR campaign generated real activity.
+              InLinkr does more than count clicks. Traffic Proof creates a timestamped snapshot you can save or share, so you can show that a QR campaign generated real activity.
             </p>
             <Link
               to="/signup"
               onClick={handleStartFreeClick}
-              className="inline-flex items-center gap-2 px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-primary hover:bg-primary text-white font-medium rounded-lg transition-colors"
             >
               Start Tracking QR Traffic
               <ArrowRight className="w-4 h-4" />
@@ -366,12 +366,12 @@ export function QRCodeTrackingPage() {
           <div className="max-w-3xl mx-auto space-y-4">
             {[
               {
-                q: "Do I need TubeLinkr to use QRLinkr?",
-                a: "No. QRLinkr is free and works on its own. TubeLinkr is for users who want tracking, Smart Links, and Traffic Proof."
+                q: "Do I need InLinkr to use QRLinkr?",
+                a: "No. QRLinkr is free and works on its own. InLinkr is for users who want tracking, Smart Links, and Traffic Proof."
               },
               {
                 q: "How does QR tracking work?",
-                a: "Instead of putting your final destination directly into the QR code, you put a TubeLinkr Smart Link in the QR code. TubeLinkr records visits and clicks to the Smart Link, then sends visitors to the destination."
+                a: "Instead of putting your final destination directly into the QR code, you put a InLinkr Smart Link in the QR code. InLinkr records visits and clicks to the Smart Link, then sends visitors to the destination."
               },
               {
                 q: "Can I use this for printed QR codes?",
@@ -383,7 +383,7 @@ export function QRCodeTrackingPage() {
               },
               {
                 q: "Is QRLinkr still free?",
-                a: "Yes. QRLinkr remains free for creating QR codes. TubeLinkr is the advanced tracking layer."
+                a: "Yes. QRLinkr remains free for creating QR codes. InLinkr is the advanced tracking layer."
               },
             ].map((faq, index) => (
               <div key={index} className="bg-gray-900/60 border border-gray-800/60 rounded-xl p-6">
@@ -407,7 +407,7 @@ export function QRCodeTrackingPage() {
               <Link
                 to="/signup"
                 onClick={handleStartFreeClick}
-                className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors text-center"
+                className="px-8 py-3 bg-primary hover:bg-primary text-white font-medium rounded-lg transition-colors text-center"
               >
                 Start Free
               </Link>
@@ -433,7 +433,7 @@ export function QRCodeTrackingPage() {
             <Link to="/pricing" className="hover:text-gray-400 transition-colors">Pricing</Link>
           </div>
           <p className="text-xs text-gray-600">
-            TubeLinkr — Track QR traffic, clicks, and placements with Smart Links.
+            InLinkr — Track QR traffic, clicks, and placements with Smart Links.
           </p>
         </footer>
       </div>

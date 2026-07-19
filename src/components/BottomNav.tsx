@@ -13,7 +13,7 @@ export function BottomNav() {
   const location = useLocation();
 
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-gray-800" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
+    <nav className="fixed bottom-0 left-0 right-0 border-t border-border bg-surface/95 shadow-ink backdrop-blur md:hidden" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
       <div className="flex items-center justify-around h-16 px-2">
         {navItems.map((item) => {
           const isActive = location.pathname === item.path || 
@@ -24,7 +24,7 @@ export function BottomNav() {
               <Link
                 key={item.path}
                 to={item.path}
-                className="relative -top-6 flex items-center justify-center w-14 h-14 bg-blue-600 rounded-full shadow-lg hover:bg-blue-700 transition-colors"
+                className="relative -top-6 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-ink-lg transition-colors hover:bg-primary"
                 aria-label={item.label}
               >
                 <item.icon className="w-6 h-6 text-white" strokeWidth={2.5} />
@@ -37,7 +37,7 @@ export function BottomNav() {
               key={item.path}
               to={item.path}
               className={`flex flex-col items-center justify-center flex-1 h-full transition-colors ${
-                isActive ? 'text-blue-500' : 'text-gray-400'
+                isActive ? 'text-primary' : 'text-text-muted hover:text-text'
               }`}
             >
               <item.icon className={`w-5 h-5 ${isActive ? 'stroke-[2.5]' : ''}`} />

@@ -10,13 +10,13 @@ interface StatusBannerProps {
  * Status banner for displaying alerts and messages
  */
 export function StatusBanner({ variant = 'info', children, className = '' }: StatusBannerProps) {
-  const baseClasses = "px-4 py-2.5 rounded-lg text-sm";
+  const baseClasses = "rounded-lg border px-3.5 py-3 text-sm leading-5";
   
   const variantClasses = {
-    error: 'bg-red-900/20 border border-red-800/50 text-red-400',
-    warning: 'bg-yellow-900/20 border border-yellow-800/50 text-yellow-400',
-    success: 'bg-green-900/20 border border-green-800/50 text-green-400',
-    info: 'bg-blue-900/20 border border-blue-800/50 text-blue-400',
+    error: 'border-red-800/60 bg-red-950/45 text-red-200',
+    warning: 'border-amber-800/60 bg-amber-950/35 text-amber-200',
+    success: 'border-emerald-800/60 bg-emerald-950/35 text-emerald-200',
+    info: 'border-blue-800/60 bg-blue-950/35 text-blue-200',
   };
   
   return (

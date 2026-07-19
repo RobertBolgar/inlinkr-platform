@@ -70,7 +70,7 @@ export function SuccessPage() {
           <>
             <div className="mb-8 flex justify-center">
               <div className="bg-blue-500/20 rounded-full p-6">
-                <Loader2 className="w-16 h-16 text-blue-500 animate-spin" />
+                <Loader2 className="w-16 h-16 text-primary animate-spin" />
               </div>
             </div>
 
@@ -105,13 +105,13 @@ export function SuccessPage() {
             </h1>
 
             <p className="text-lg text-gray-400 mb-8">
-              Your TubeLinkr plan is now active.
+              Your InLinkr plan is now active.
             </p>
 
             <div className="space-y-4">
               <Link
                 to="/dashboard"
-                className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+                className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-primary hover:bg-primary text-white font-medium rounded-lg transition-colors"
               >
                 Go to Dashboard
                 <ArrowRight className="w-4 h-4" />
@@ -147,7 +147,7 @@ export function SuccessPage() {
             <div className="space-y-4">
               <button
                 onClick={() => window.location.reload()}
-                className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors"
+                className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-primary hover:bg-primary text-white font-medium rounded-lg transition-colors"
               >
                 Refresh Page
                 <ArrowRight className="w-4 h-4" />
