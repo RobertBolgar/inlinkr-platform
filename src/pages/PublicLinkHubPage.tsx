@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link as LinkIcon, Loader2, ExternalLink, Star, Play, Layers, Clock, CheckCircle, TrendingUp, Zap } from 'lucide-react';
+import { buildSmartLinkUrl } from '../lib/smart-link-url';
 
 interface LinkData {
   id: string;
@@ -161,7 +162,10 @@ export function PublicLinkHubPage() {
   };
 
   const getLinkUrl = (slug: string) => {
-    return `https://${hubData.subdomain}.tubelinkr.com/${slug}`;
+    return buildSmartLinkUrl({
+      slug,
+      username: hubData.username,
+    }, null);
   };
 
   const getYouTubeUrl = (videoId: string) => {

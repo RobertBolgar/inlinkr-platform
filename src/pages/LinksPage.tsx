@@ -10,7 +10,7 @@ import { AddPlacementModal } from '../components/AddPlacementModal';
 import { QRCodeDisplay } from '../components/placements/QRCodeDisplay';
 import { Plus, RefreshCw, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { hasProAccess } from '../lib/plan';
-import { config } from '../lib/config/frontend';
+import { buildSmartLinkUrl } from '../lib/smart-link-url';
 import {
   LinkPortfolio,
   LinkActivityChart,
@@ -183,12 +183,12 @@ export function LinksPage() {
 
       if (qrPlacement) {
         // Use existing QR placement
-        const baseUrl = userHasProAccess && user?.subdomain
-          ? `https://${user.subdomain}.tubelinkr.com`
-          : config.redirectBaseUrl;
-        const url = link.public_code
-          ? `${baseUrl}/${link.public_code}/${qrPlacement.public_code}`
-          : `${baseUrl}/${user?.username}/${link.slug}/${qrPlacement.public_code}`;
+        const url = buildSmartLinkUrl({
+          slug: link.slug,
+          publicCode: link.public_code,
+          username: user?.username,
+          placementCode: qrPlacement.public_code,
+        }, user);
         setQrPlacementUrl(url);
         setShowQRModal(true);
       } else {
@@ -202,12 +202,12 @@ export function LinksPage() {
         });
 
         if (qrData.success) {
-          const baseUrl = userHasProAccess && user?.subdomain
-            ? `https://${user.subdomain}.tubelinkr.com`
-            : config.redirectBaseUrl;
-          const url = link.public_code
-            ? `${baseUrl}/${link.public_code}/${qrData.placement.public_code}`
-            : `${baseUrl}/${user?.username}/${link.slug}/${qrData.placement.public_code}`;
+          const url = buildSmartLinkUrl({
+            slug: link.slug,
+            publicCode: link.public_code,
+            username: user?.username,
+            placementCode: qrData.placement.public_code,
+          }, user);
           setQrPlacementUrl(url);
           setShowQRModal(true);
           fetchLinks(); // Refresh to show the new placement count

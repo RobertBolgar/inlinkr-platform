@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Link as LinkType, User } from '../lib/cloudflare';
 import { Copy, Check, ExternalLink, Plus, List, ChevronDown, ChevronUp, MoreHorizontal, Power, PowerOff, Edit2, QrCode } from 'lucide-react';
 import { hasFeature, FEATURES, hasProAccess } from '../lib/plan';
-import { config } from '../lib/config/frontend';
+import { buildSmartLinkUrl } from '../lib/smart-link-url';
 
 type LinkWithStats = LinkType & {
   clicks: number;
@@ -28,8 +28,6 @@ interface LinkCardProps {
   user: User | null;
 }
 
-const PUBLIC_BASE_URL = config.redirectBaseUrl;
-
 export function LinkCard({ link, username, onToggleStatus, onAddPlacement, onViewPlacements, onShowQR, onShareProof, onRemoveBaseVideo, user }: LinkCardProps) {
   const navigate = useNavigate();
   const userHasProAccess = useMemo(() => hasProAccess(user), [user]);
@@ -40,22 +38,16 @@ export function LinkCard({ link, username, onToggleStatus, onAddPlacement, onVie
   const [expanded, setExpanded] = useState(false);
   const [showOverflowMenu, setShowOverflowMenu] = useState(false);
 
-  const getPublicUrl = (slug: string, publicCode?: string): string => {
-    if (!username) return '';
-    // Phase 3: Prefer public_code for Free links, fallback to username/slug
-    if (publicCode) {
-      return `${PUBLIC_BASE_URL}/${publicCode}`;
-    }
-    return `${PUBLIC_BASE_URL}/${username}/${slug}`;
-  };
-
-  const getBrandedUrl = (slug: string): string => {
-    const subdomain = user?.subdomain || user?.username || '';
-    return `https://${subdomain}.tubelinkr.com/${slug}`;
+  const getPublicUrl = (): string => {
+    return buildSmartLinkUrl({
+      slug: link.slug,
+      publicCode: link.public_code,
+      username,
+    }, user);
   };
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(getPublicUrl(link.slug, link.public_code));
+    navigator.clipboard.writeText(getPublicUrl());
     setCopied(true);
     if (userHasProAccess && !hasFeature(user, FEATURES.CUSTOM_SUBDOMAIN)) {
       setShowCopyUpgradeMessage(true);
@@ -65,21 +57,17 @@ export function LinkCard({ link, username, onToggleStatus, onAddPlacement, onVie
   };
 
   const quickCopy = () => {
-    const url = hasFeature(user, FEATURES.CUSTOM_SUBDOMAIN)
-      ? getBrandedUrl(link.slug)
-      : getPublicUrl(link.slug, link.public_code);
+    const url = getPublicUrl();
     if (!url) return;
     navigator.clipboard.writeText(url);
     setQuickCopied(true);
     setTimeout(() => setQuickCopied(false), 1500);
   };
 
-  const canQuickCopy = hasFeature(user, FEATURES.CUSTOM_SUBDOMAIN)
-    ? !!(user?.subdomain || user?.username)
-    : !!username;
+  const canQuickCopy = !!username;
 
   const copyBrandedToClipboard = () => {
-    navigator.clipboard.writeText(getBrandedUrl(link.slug));
+    navigator.clipboard.writeText(getPublicUrl());
     setBrandedCopied(true);
     setTimeout(() => setBrandedCopied(false), 2000);
   };
@@ -194,7 +182,7 @@ export function LinkCard({ link, username, onToggleStatus, onAddPlacement, onVie
               <div className="flex flex-col min-w-0 flex-1">
                 <span className="text-xs font-medium text-purple-400/80 uppercase tracking-wide mb-0.5">Branded link</span>
                 <div className="text-xs font-medium text-purple-300/90 font-mono break-all">
-                  {getBrandedUrl(link.slug)}
+                  {getPublicUrl()}
                 </div>
               </div>
               <button
@@ -215,7 +203,7 @@ export function LinkCard({ link, username, onToggleStatus, onAddPlacement, onVie
           <div className="flex items-center gap-2 bg-gray-800/30 rounded-lg p-2.5">
             <span className="text-xs text-gray-400 whitespace-nowrap">Fallback:</span>
             <div className="text-xs text-gray-400 font-mono flex-1 min-w-0 truncate">
-              {getPublicUrl(link.slug, link.public_code)}
+              {getPublicUrl()}
             </div>
             <button
               onClick={copyToClipboard}
@@ -344,7 +332,7 @@ export function LinkCard({ link, username, onToggleStatus, onAddPlacement, onVie
           {!userHasProAccess && !hasFeature(user, FEATURES.CUSTOM_SUBDOMAIN) && (
             <div className="bg-purple-900/20 border border-purple-800/50 rounded-lg p-3">
               <div className="text-sm text-purple-400 mb-2 font-medium">Branded creator links build more trust.</div>
-              <div className="text-sm text-purple-300 font-mono mb-2 break-all">{getBrandedUrl(link.slug)}</div>
+              <div className="text-sm text-purple-300 font-mono mb-2 break-all">{getPublicUrl()}</div>
               <div className="text-xs text-gray-400 mb-3">Look more professional to viewers and sponsors.</div>
               <button
                 onClick={() => navigate('/upgrade')}

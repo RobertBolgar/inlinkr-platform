@@ -8,6 +8,7 @@ import { hasProAccess } from '../lib/plan';
 import { getAllPlacementKinds, getPlacementLabel } from '../lib/placement-intelligence';
 import { PlacementBehaviorHint } from '../components/placements/PlacementBehaviorHint';
 import { AlignLeft, MessageSquareDot, User as UserIcon, Zap, Video, MoreHorizontal, Wand2, ChevronDown, Copy, Check, ExternalLink } from 'lucide-react';
+import { buildSmartLinkUrl } from '../lib/smart-link-url';
 
 export function NewLinkPage() {
   const { user } = useAuth();
@@ -65,22 +66,23 @@ export function NewLinkPage() {
     if (!createdLink || !user) return;
 
     // In attach mode, copy the placement tracking URL
-    // In create mode, copy the branded link for Pro/Founder, otherwise smart short link
+    // In create mode, copy the smart link (environment-aware)
     let linkUrl: string;
     if (mode === 'attach' && createdLink.placement_public_code) {
       // Attach mode: placement tracking URL
-      linkUrl = createdLink?.public_code
-        ? `https://go-dev.inlinkr.com/${createdLink?.public_code}/${createdLink.placement_public_code}`
-        : `https://go-dev.inlinkr.com/${user?.username}/${createdLink?.slug}/${createdLink.placement_public_code}`;
+      linkUrl = buildSmartLinkUrl({
+        slug: createdLink.slug,
+        publicCode: createdLink.public_code,
+        username: user.username,
+        placementCode: createdLink.placement_public_code,
+      }, user);
     } else {
-      // Create mode: branded link for Pro/Founder, smart short link for Free
-      if (userHasProAccess) {
-        linkUrl = `https://${user?.subdomain || user?.username}.tubelinkr.com/${createdLink?.slug}`;
-      } else {
-        linkUrl = createdLink?.public_code
-          ? `https://go-dev.inlinkr.com/${createdLink?.public_code}`
-          : `https://go-dev.inlinkr.com/${user?.username}/${createdLink?.slug}`;
-      }
+      // Create mode: smart link (environment-aware)
+      linkUrl = buildSmartLinkUrl({
+        slug: createdLink.slug,
+        publicCode: createdLink.public_code,
+        username: user.username,
+      }, user);
     }
 
     try {
@@ -701,9 +703,7 @@ export function NewLinkPage() {
                   Use the placement link where you selected it so TubeLinkr can attribute the click correctly.
                 </p>
                 {createdLink.createdPlacements.map((placement, index) => {
-                  const placementUrl = createdLink?.public_code
-                    ? `https://go-dev.inlinkr.com/${createdLink?.public_code}/${placement.public_code}`
-                    : `https://go-dev.inlinkr.com/${user?.username}/${createdLink?.slug}/${placement.public_code}`;
+                  const placementUrl = buildSmartLinkUrl({ slug: createdLink.slug, publicCode: createdLink.public_code, username: user?.username, placementCode: placement.public_code }, user);
                   return (
                     <div key={placement.public_code} className={index > 0 ? 'mt-2' : ''}>
                       <div className="font-mono text-sm text-blue-400 break-all bg-gray-950 border border-blue-900/50 rounded-lg px-3 py-2 select-all mb-2">
@@ -742,16 +742,10 @@ export function NewLinkPage() {
               <div className="font-mono text-sm text-blue-400 break-all bg-gray-950 border border-blue-900/50 rounded-lg px-3 py-2 select-all mb-3">
                 {mode === 'attach' && createdLink?.placement_public_code ? (
                   // Attach mode: placement tracking URL
-                  createdLink?.public_code
-                    ? `https://go-dev.inlinkr.com/${createdLink?.public_code}/${createdLink.placement_public_code}`
-                    : `https://go-dev.inlinkr.com/${user?.username}/${createdLink?.slug}/${createdLink.placement_public_code}`
+                  buildSmartLinkUrl({ slug: createdLink.slug || '', publicCode: createdLink.public_code, username: user?.username, placementCode: createdLink.placement_public_code }, user)
                 ) : (
-                  // Create mode: branded link for Pro/Founder, smart short link for Free
-                  userHasProAccess
-                    ? `https://${user?.subdomain || user?.username}.tubelinkr.com/${createdLink?.slug}`
-                    : (createdLink?.public_code
-                        ? `https://go-dev.inlinkr.com/${createdLink?.public_code}`
-                        : `https://go-dev.inlinkr.com/${user?.username}/${createdLink?.slug}`)
+                  // Create mode: smart link (environment-aware)
+                  buildSmartLinkUrl({ slug: createdLink?.slug || '', publicCode: createdLink?.public_code, username: user?.username }, user)
                 )}
               </div>
               {(!createdLink?.createdPlacements || createdLink.createdPlacements.length === 0) && (
@@ -794,18 +788,10 @@ export function NewLinkPage() {
                   let linkUrl: string;
                   if (mode === 'attach' && createdLink?.placement_public_code) {
                     // Attach mode: placement tracking URL
-                    linkUrl = createdLink?.public_code
-                      ? `https://go-dev.inlinkr.com/${createdLink?.public_code}/${createdLink.placement_public_code}`
-                      : `https://go-dev.inlinkr.com/${user?.username}/${createdLink?.slug}/${createdLink.placement_public_code}`;
+                    linkUrl = buildSmartLinkUrl({ slug: createdLink.slug || '', publicCode: createdLink.public_code, username: user?.username, placementCode: createdLink.placement_public_code }, user);
                   } else {
-                    // Create mode: branded link for Pro/Founder, smart short link for Free
-                    if (userHasProAccess) {
-                      linkUrl = `https://${user?.subdomain || user?.username}.tubelinkr.com/${createdLink?.slug}`;
-                    } else {
-                      linkUrl = createdLink?.public_code
-                        ? `https://go-dev.inlinkr.com/${createdLink?.public_code}`
-                        : `https://go-dev.inlinkr.com/${user?.username}/${createdLink?.slug}`;
-                    }
+                    // Create mode: smart link (environment-aware)
+                    linkUrl = buildSmartLinkUrl({ slug: createdLink?.slug || '', publicCode: createdLink?.public_code || undefined, username: user?.username }, user);
                   }
                   window.open(linkUrl, "_blank");
                 }}
@@ -993,7 +979,7 @@ export function NewLinkPage() {
                   {userHasProAccess && (
                     <div className="flex items-stretch mb-2">
                       <div className="flex items-center px-3 bg-gray-800/80 border border-r-0 border-gray-700 rounded-l-lg text-gray-500 text-xs whitespace-nowrap font-mono select-none">
-                        {user?.subdomain || user?.username}.tubelinkr.com/
+                        {buildSmartLinkUrl({ slug: slug || 'my-link', username: user?.username }, user).replace(/\/[^/]+$/, '')}/
                       </div>
                       <input
                         type="text"
@@ -1011,20 +997,11 @@ export function NewLinkPage() {
                   )}
 
                   {/* Live preview pill */}
-                  {userHasProAccess ? (
-                    slug && !slugError && (
-                      <div className="flex items-center gap-2 px-3 py-2 bg-blue-900/10 border border-blue-800/30 rounded-lg mt-2">
-                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full flex-shrink-0" />
-                        <span className="text-xs text-blue-300 font-mono truncate">
-                          {`https://${user?.subdomain || user?.username}.tubelinkr.com/${slug}`}
-                        </span>
-                      </div>
-                    )
-                  ) : (
-                    <div className="flex items-center gap-2 px-3 py-2 bg-blue-900/10 border border-blue-800/30 rounded-lg">
+                  {slug && !slugError && (
+                    <div className="flex items-center gap-2 px-3 py-2 bg-blue-900/10 border border-blue-800/30 rounded-lg mt-2">
                       <div className="w-1.5 h-1.5 bg-green-500 rounded-full flex-shrink-0" />
-                      <span className="text-xs text-blue-300 font-mono">
-                        https://go-dev.inlinkr.com/[smart-code]
+                      <span className="text-xs text-blue-300 font-mono truncate">
+                        {buildSmartLinkUrl({ slug, publicCode: createdLink?.public_code, username: user?.username }, user)}
                       </span>
                     </div>
                   )}

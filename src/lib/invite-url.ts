@@ -1,27 +1,28 @@
-import { config } from './config/frontend';
+import { buildInviteUrl } from './smart-link-url';
+import { User } from './cloudflare';
 
 interface GetInviteUrlOptions {
   username?: string | null;
-  isPro?: boolean;
-  isFounder?: boolean;
   apiReferralUrl?: string | null;
+  user?: User | null;
 }
 
 /**
  * Returns the appropriate invite URL based on user plan
- * - Pro/Founder users: https://{username}.tubelinkr.com/invite (TubeLinkr workspace)
+ * - Pro/Founder users: https://{username}.tubelinkr.com/invite (TubeLinkr workspace, when enabled)
  * - Free users: https://go-dev.inlinkr.com/{username}/invite (InLinkr development)
  * - Falls back to API-provided URL for free users
  * - Returns null if username is missing
  */
-export function getInviteUrl({ username, isPro, isFounder, apiReferralUrl }: GetInviteUrlOptions): string | null {
+export function getInviteUrl({ username, apiReferralUrl, user }: GetInviteUrlOptions): string | null {
   if (!username) return null;
 
-  // Pro and Founder users always get branded URL (TubeLinkr workspace)
-  if (isPro || isFounder) {
-    return `https://${username}.tubelinkr.com/invite`;
+  // Use centralized URL builder
+  const centralizedUrl = buildInviteUrl(username, user);
+  if (centralizedUrl) {
+    return centralizedUrl;
   }
 
-  // Free users use API URL as fallback to generic invite link (InLinkr development)
-  return apiReferralUrl || `${config.redirectBaseUrl}/${username}/invite`;
+  // Fallback to API URL
+  return apiReferralUrl || null;
 }

@@ -9,11 +9,8 @@ import { Badge } from '../components/ui';
 import { Copy, CheckCircle2, Plus, ArrowLeft, Trash2, RefreshCw, QrCode, X } from 'lucide-react';
 import { db as apiClient } from '../lib/cloudflare';
 import { useAuth } from '../contexts/AuthContext';
-import { hasFeature, FEATURES } from '../lib/plan';
 import { getPlacementLabel } from '../lib/placement-intelligence';
-import { config } from '../lib/config/frontend';
-
-const PUBLIC_BASE_URL = config.redirectBaseUrl;
+import { buildSmartLinkUrl } from '../lib/smart-link-url';
 
 type Placement = {
   id: number;
@@ -70,25 +67,13 @@ export function PlacementsPage() {
   const [youtubeVideosLoading, setYoutubeVideosLoading] = useState(false);
   const [youtubeVideosError, setYoutubeVideosError] = useState<string | null>(null);
 
-  const getBaseUrl = () => {
-    if (hasFeature(user, FEATURES.CUSTOM_SUBDOMAIN)) {
-      const subdomain = user?.subdomain || user?.username || '';
-      return `https://${subdomain}.tubelinkr.com`;
-    }
-    return PUBLIC_BASE_URL;
-  };
-
   const getPlacementUrl = (placement: Placement) => {
-    const baseUrl = getBaseUrl();
-    if (hasFeature(user, FEATURES.CUSTOM_SUBDOMAIN)) {
-      // Pro users: branded subdomain (unchanged)
-      return `${baseUrl}/${linkInfo?.slug}/${placement.public_code}`;
-    }
-    // Phase 3: Free users prefer public_code, fallback to username/slug
-    if (linkInfo?.public_code) {
-      return `${baseUrl}/${linkInfo?.public_code}/${placement.public_code}`;
-    }
-    return `${baseUrl}/${linkInfo?.username}/${linkInfo?.slug}/${placement.public_code}`;
+    return buildSmartLinkUrl({
+      slug: linkInfo?.slug || '',
+      publicCode: linkInfo?.public_code,
+      username: linkInfo?.username,
+      placementCode: placement.public_code,
+    }, user);
   };
 
   useEffect(() => {
@@ -590,10 +575,11 @@ export function PlacementsPage() {
             <button
               onClick={() => {
                 if (linkInfo) {
-                  // Phase 3: Prefer public_code for Free links, fallback to username/slug
-                  const url = hasFeature(user, FEATURES.CUSTOM_SUBDOMAIN)
-                    ? `${getBaseUrl()}/${linkInfo.slug}`
-                    : (linkInfo.public_code ? `${PUBLIC_BASE_URL}/${linkInfo.public_code}` : `${PUBLIC_BASE_URL}/${linkInfo.username}/${linkInfo.slug}`);
+                  const url = buildSmartLinkUrl({
+                    slug: linkInfo.slug,
+                    publicCode: linkInfo.public_code,
+                    username: linkInfo.username,
+                  }, user);
                   navigator.clipboard.writeText(url);
                   setCopiedId(-1);
                   setTimeout(() => setCopiedId(null), 2000);

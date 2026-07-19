@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Layout } from '../components/Layout';
 import { useAuth } from '../contexts/AuthContext';
 import { hasProAccess } from '../lib/plan';
+import { buildSmartLinkUrl } from '../lib/smart-link-url';
 
 export function HubSettingsPage() {
   const { user } = useAuth();
@@ -684,7 +685,7 @@ export function HubSettingsPage() {
                 <div className="flex items-center justify-between p-3 bg-gray-800/50 border border-gray-700 rounded-lg">
                   <div className="flex-1 min-w-0">
                     <div className="text-xs text-gray-500 mb-1">Main Hub URL</div>
-                    <div className="text-sm text-white truncate">{user.subdomain}.tubelinkr.com</div>
+                    <div className="text-sm text-white truncate">{buildSmartLinkUrl({ slug: '', username: user?.username }, user).replace(/\/$/, '')}</div>
                   </div>
                   <div className="flex items-center gap-2 ml-3">
                     <button
@@ -694,7 +695,7 @@ export function HubSettingsPage() {
                       View
                     </button>
                     <button
-                      onClick={() => handleCopy(`https://${user.subdomain}.tubelinkr.com`, 'hub')}
+                      onClick={() => handleCopy(buildSmartLinkUrl({ slug: '', username: user?.username }, user).replace(/\/$/, ''), 'hub')}
                       className="px-3 py-1.5 bg-gray-700 hover:bg-gray-600 text-white text-xs font-medium rounded-lg transition-colors"
                     >
                       {copySuccess === 'hub' ? 'Copied!' : 'Copy'}
@@ -709,10 +710,10 @@ export function HubSettingsPage() {
                       <div key={section.section_slot} className="flex items-center justify-between p-2 bg-gray-800/30 border border-gray-700/50 rounded-lg">
                         <div className="flex-1 min-w-0">
                           <div className="text-xs text-gray-400">{section.label || `Section ${section.section_slot}`}</div>
-                          <div className="text-sm text-white truncate">{user.subdomain}.tubelinkr.com/#{section.slug}</div>
+                          <div className="text-sm text-white truncate">{buildSmartLinkUrl({ slug: '', username: user?.username }, user).replace(/\/$/, '')}/#{section.slug}</div>
                         </div>
                         <button
-                          onClick={() => handleCopy(`https://${user.subdomain}.tubelinkr.com/#${section.slug}`, section.label || `section-${section.section_slot}`)}
+                          onClick={() => handleCopy(`${buildSmartLinkUrl({ slug: '', username: user?.username }, user).replace(/\/$/, '')}/#${section.slug}`, section.label || `section-${section.section_slot}`)}
                           className="ml-3 px-3 py-1.5 bg-gray-700 hover:bg-gray-600 text-white text-xs font-medium rounded-lg transition-colors"
                         >
                           {copySuccess === (section.label || `section-${section.section_slot}`) ? 'Copied!' : 'Copy'}
