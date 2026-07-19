@@ -17,9 +17,15 @@ export const RESERVED_SUBDOMAINS: readonly string[] = [
   'preview',
   'test',
   'localhost',
+  'docs',
+  'status',
+  'support',
+  'accounts',
+  'clerk',
+  'marketing',
 ];
 
-function getMarketingRootDomain(): string {
+export function getMarketingRootDomain(): string {
   try {
     return new URL(config.marketingBaseUrl).hostname;
   } catch {
@@ -39,18 +45,9 @@ export function getSubdomainFromHostname(): string | null {
   const hostname = getCurrentHostname();
   if (!hostname) return null;
 
-  const marketingRoot = getMarketingRootDomain();
-
-  // Current platform root domain (e.g. *.inlinkr.com)
-  if (hostname === marketingRoot) return null;
-  if (hostname.endsWith(`.${marketingRoot}`)) {
-    const parts = hostname.split('.');
-    const subdomain = parts[0];
-    if (RESERVED_SUBDOMAINS.includes(subdomain)) return null;
-    return subdomain;
-  }
-
-  // Legacy TubeLinkr branded subdomains (e.g. *.tubelinkr.com)
+  // TubeLinkr custom subdomains host public creator hubs.
+  // InLinkr subdomains (e.g. username.inlinkr.com) are Smart Links, not hubs,
+  // so they must not be classified as branded hubs in the React app.
   if (hostname.endsWith('.tubelinkr.com') && hostname !== 'tubelinkr.com') {
     const parts = hostname.split('.');
     const subdomain = parts[0];

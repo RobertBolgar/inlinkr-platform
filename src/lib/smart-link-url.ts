@@ -4,6 +4,7 @@
  */
 
 import { config } from './config/frontend';
+import { getMarketingRootDomain } from './hostname';
 import { User, Link as LinkType } from './cloudflare';
 import { hasFeature, FEATURES } from './plan';
 
@@ -39,8 +40,8 @@ const ENABLE_CUSTOM_SUBDOMAINS = import.meta.env.VITE_ENABLE_CUSTOM_SUBDOMAINS =
  * - Free users: {redirectBaseUrl}/{publicCode} or {redirectBaseUrl}/{username}/{slug}
  */
 export function buildSmartLinkUrl(options: SmartLinkUrlOptions, user?: User | null): string {
-  const { slug, publicCode, username, placementCode, forceRedirectBase } = options;
-  
+  const { forceRedirectBase } = options;
+
   // In development or when forced, always use redirect base URL
   if (!ENABLE_CUSTOM_SUBDOMAINS || forceRedirectBase) {
     return buildRedirectBaseUrl(options);
@@ -86,12 +87,12 @@ function buildRedirectBaseUrl(options: SmartLinkUrlOptions): string {
 }
 
 /**
- * Build custom subdomain URL for Pro/Founder users (TubeLinkr production only)
- * Format: {subdomain}.tubelinkr.com/{slug}
+ * Build custom subdomain URL for Pro/Founder users (InLinkr production)
+ * Format: {subdomain}.inlinkr.com/{slug}
  */
 function buildCustomSubdomainUrl(options: SmartLinkUrlOptions, user: User): string {
   const subdomain = user.subdomain || user.username || '';
-  return `https://${subdomain}.tubelinkr.com/${options.slug}`;
+  return `https://${subdomain}.${getMarketingRootDomain()}/${options.slug}`;
 }
 
 /**
@@ -107,7 +108,7 @@ export function buildInviteUrl(username: string | null, user?: User | null): str
   
   // In production, Pro/Founder users get branded URLs
   if (user && hasFeature(user, FEATURES.CUSTOM_SUBDOMAIN)) {
-    return `https://${user.subdomain || user.username}.tubelinkr.com/invite`;
+    return `https://${user.subdomain || user.username}.${getMarketingRootDomain()}/invite`;
   }
   
   // Free users use redirect base URL
