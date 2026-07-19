@@ -68,12 +68,38 @@ InLinkr is currently in the development and migration phase. The development app
 
 ## Environment Variables
 
+### Configuration Sources
+
+#### Local Development
+- **File:** `.env` (never committed to Git)
+- **Purpose:** Actual local values for development
+- **Scope:** Both frontend (VITE_*) and backend variables
+
+#### Cloudflare Pages Build-Time Variables
+- **Location:** Cloudflare Pages Dashboard → Settings → Environment Variables
+- **Purpose:** Required for VITE_* variables used during `npm run build`
+- **Critical:** `VITE_CLERK_PUBLISHABLE_KEY` must be available during build
+- **Note:** VITE_* variables are compiled into browser JavaScript and are NOT private, even if Cloudflare stores them as encrypted variables
+
+#### Cloudflare Pages Functions Runtime Variables
+- **Location:** Cloudflare Pages Dashboard → Settings → Functions → Environment Variables
+- **Purpose:** Backend variables available to Functions at runtime
+- **Configuration:** Can also be set via wrangler.toml where supported
+- **Bindings:** D1 database, KV, R2, and other service bindings
+
+#### Secrets
+- **Location:** Cloudflare Pages Dashboard → Settings → Functions → Environment Variables (encrypted)
+- **Purpose:** Sensitive values that must not be exposed
+- **Examples:** `CLERK_SECRET_KEY`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `RESEND_API_KEY`, `GOOGLE_OAUTH_CLIENT_SECRET`
+- **Alternative:** Set via `wrangler secret` command for Workers
+
 ### Frontend (Vite)
 
 Frontend environment variables are prefixed with `VITE_` and are exposed to the browser. They are configured in:
 
 - **Local development:** `.env` file (not committed)
-- **Cloudflare Pages:** `wrangler.toml` under `[vars]` or `[env.production]`/`[env.preview]`
+- **Cloudflare Pages build:** Cloudflare Pages Dashboard → Environment Variables (required for build)
+- **wrangler.toml:** Can be used for reference, but Dashboard is authoritative for Pages builds
 
 | Variable | Required | Default | Purpose |
 |----------|----------|---------|---------|
@@ -96,8 +122,9 @@ Frontend environment variables are prefixed with `VITE_` and are exposed to the 
 Backend environment variables are used by Cloudflare Functions. They are configured in:
 
 - **Local development:** `.env` file (not committed)
-- **Cloudflare Pages:** `wrangler.toml` under `[vars]` or `[env.production]`/`[env.preview]`
-- **Secrets:** Cloudflare Dashboard or `wrangler secret` command (recommended for sensitive values)
+- **Cloudflare Pages Functions:** Cloudflare Pages Dashboard → Settings → Functions → Environment Variables
+- **Wrangler configuration:** wrangler.toml where supported for Workers
+- **Secrets:** Cloudflare encrypted secrets (recommended for sensitive values)
 
 | Variable | Required | Default | Secret? | Purpose |
 |----------|----------|---------|---------|---------|
@@ -162,15 +189,26 @@ Custom subdomains (e.g., `username.inlinkr.com`) are controlled by the `VITE_ENA
 
 ### Current State
 
-- **Application:** TubeLinkr development app (`.clerk.accounts.dev`)
-- **Allowed domains:** `tubelinkr.com`, `www.tubelinkr.com`
-- **Auth URLs:** Point to `tubelinkr.com`
+- **Application:** InLinkr development app (`.clerk.accounts.dev`)
+- **Publishable key domain:** `.clerk.accounts.dev` (test environment)
+- **Allowed domains:** `app.inlinkr.com`, `localhost` (for development)
+- **Auth URLs:** Point to `app.inlinkr.com/login` and `app.inlinkr.com/signup`
+- **Isolation:** InLinkr uses its own Clerk application, separate from TubeLinkr production
+
+### Architecture
+
+- **Frontend:** Uses InLinkr publishable key (`VITE_CLERK_PUBLISHABLE_KEY`)
+- **Backend (Functions):** Uses matching InLinkr secret key (`CLERK_SECRET_KEY`) and JWKS URL (`CLERK_JWKS_URL`)
+- **Application domain:** `app.inlinkr.com`
+- **TubeLinkr production:** Retains its separate Clerk application and users
+- **Isolation requirement:** InLinkr and TubeLinkr Clerk applications must remain isolated
 
 ### Required for InLinkr Production
 
-- **New application:** Production Clerk app
+- **New application:** Production Clerk app (`.clerk.accounts.com`)
 - **Allowed domains:** `app.inlinkr.com`, `localhost` (for development)
 - **Auth URLs:** Point to `app.inlinkr.com/login` and `app.inlinkr.com/signup`
+- **Secrets:** Migrate `CLERK_SECRET_KEY` and update `CLERK_JWKS_URL`
 
 ## Deployment Architecture
 

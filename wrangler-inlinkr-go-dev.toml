@@ -1,0 +1,30 @@
+# InLinkr Development Redirect Worker Configuration
+# This configuration deploys the development redirect Worker to inlinkr-go-dev
+# Target domain: go-dev.inlinkr.com
+# D1 database: tubelinkr-db (development sandbox)
+
+name = "inlinkr-go-dev"
+main = "worker.js"
+compatibility_date = "2024-04-07"
+
+# Custom domain for development redirect
+routes = [
+  "go-dev.inlinkr.com/*"
+]
+
+# D1 database binding - development sandbox
+[[d1_databases]]
+binding = "DB"
+database_name = "tubelinkr-db"
+database_id = "7fd2cd09-fafa-496f-8310-a7e86ca5c03c"
+
+# Environment variables
+[vars]
+ENVIRONMENT = "development"
+REDIRECT_BASE_URL = "https://go-dev.inlinkr.com"
+APP_BASE_URL = "https://app.inlinkr.com"
+MARKETING_BASE_URL = "https://inlinkr.com"
+
+# Note: This configuration references worker.js which is currently the TubeLinkr production worker.
+# For full reproducibility, inlinkr-go-dev should have its own dedicated source file or
+# worker.js should be refactored to be environment-agnostic.
