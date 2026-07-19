@@ -1,7 +1,7 @@
 import { sendTransactionalEmail } from '../email-helper.js';
 import { logActivityEvent } from '../activity-helper.js';
 import { stampReferralConversion } from '../creator-impact-helper.js';
-import { getConfig } from '../lib/config.js';
+import { getConfig } from '../../lib/config.js';
 
 export async function onRequestPost(context) {
   const { request, env } = context;

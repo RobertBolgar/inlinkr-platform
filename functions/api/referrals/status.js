@@ -1,6 +1,6 @@
 import { getAuthenticatedUser } from '../auth-helper.js';
 import { getFeatureFlag, generateReferralCode, checkAndGrantReferralRewards } from '../referral-helper.js';
-import { getConfig } from '../lib/config.js';
+import { getConfig } from '../../lib/config.js';
 
 export async function onRequest(context) {
   const { request, env } = context;

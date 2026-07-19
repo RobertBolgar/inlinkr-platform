@@ -1,5 +1,5 @@
 import { getAuthenticatedUser } from '../auth-helper.js';
-import { getConfig } from '../lib/config.js';
+import { getConfig } from '../../lib/config.js';
 
 // Validate and sanitize Origin header to prevent open redirect attacks
 // Only allow known TubeLinkr domains for Stripe return URLs

@@ -3,7 +3,7 @@
 // and recent referral list for use in the future Settings Creator Impact section.
 
 import { getAuthenticatedUser } from '../auth-helper.js';
-import { getConfig } from '../lib/config.js';
+import { getConfig } from '../../lib/config.js';
 
 export async function onRequestGet(context) {
   const { request, env } = context;
