@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { getPendingRedirect, clearPendingRedirect } from './lib/pending-redirect';
 import { updateCanonicalTag } from './lib/og-metadata';
 import config from './lib/config/frontend';
+import { isBrandedSubdomain } from './lib/hostname';
 import { HomePageB } from './pages/HomePageB';
 import { LoginPage } from './pages/LoginPage';
 import { SignupPage } from './pages/SignupPage';
@@ -145,20 +146,6 @@ function AppRoutes() {
   useEffect(() => {
     updateCanonicalTag(location.pathname);
   }, [location.pathname]);
-
-  // Detect branded subdomains
-  const isBrandedSubdomain = () => {
-    if (typeof window === 'undefined') return false;
-    const hostname = window.location.hostname;
-    return (
-      hostname.endsWith(".tubelinkr.com") &&
-      hostname !== "tubelinkr.com" &&
-      hostname !== "www.tubelinkr.com" &&
-      hostname !== "go.tubelinkr.com" &&
-      hostname !== "pro-dev.tubelinkr.com" &&
-      hostname !== "free-dev.tubelinkr.com"
-    );
-  };
 
   return (
     <Routes>

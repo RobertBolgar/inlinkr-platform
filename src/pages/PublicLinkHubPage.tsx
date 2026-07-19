@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link as LinkIcon, Loader2, ExternalLink, Star, Play, Layers, Clock, CheckCircle, TrendingUp, Zap } from 'lucide-react';
 import { buildSmartLinkUrl } from '../lib/smart-link-url';
+import { getSubdomainFromHostname } from '../lib/hostname';
 
 interface LinkData {
   id: string;
@@ -70,16 +71,8 @@ export function PublicLinkHubPage() {
       return routeSubdomain;
     }
     
-    // Then try hostname (for subdomain.tubelinkr.com)
-    if (typeof window !== 'undefined') {
-      const hostname = window.location.hostname;
-      const hostnameParts = hostname.split('.');
-      if (hostnameParts.length >= 2 && hostnameParts[1] === 'tubelinkr' && hostnameParts[2] === 'com') {
-        return hostnameParts[0];
-      }
-    }
-    
-    return null;
+    // Then try hostname for branded/creator subdomains
+    return getSubdomainFromHostname();
   };
 
   const subdomain = getSubdomain();
