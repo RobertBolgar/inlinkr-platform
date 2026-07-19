@@ -7,7 +7,7 @@ import { hasProAccess } from './lib/plan';
 import { useEffect } from 'react';
 import { getPendingRedirect, clearPendingRedirect } from './lib/pending-redirect';
 import { updateCanonicalTag } from './lib/og-metadata';
-import { HomePage } from './pages/HomePage';
+import config from './lib/config/frontend';
 import { HomePageB } from './pages/HomePageB';
 import { LoginPage } from './pages/LoginPage';
 import { SignupPage } from './pages/SignupPage';
@@ -41,6 +41,30 @@ function StaticImage() {
   const imagePath = location.pathname;
   // Redirect to the actual static file by letting the browser handle it
   window.location.href = imagePath;
+  return null;
+}
+
+function RootRedirect() {
+  const { user, loading } = useAppAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (loading) return;
+    if (user) {
+      navigate(user.username ? '/dashboard' : '/setup-username', { replace: true });
+    } else if (typeof window !== 'undefined') {
+      window.location.replace(config.marketingBaseUrl);
+    }
+  }, [loading, user, navigate]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-950 flex items-center justify-center">
+        <div className="text-white">Loading...</div>
+      </div>
+    );
+  }
+
   return null;
 }
 
@@ -141,7 +165,7 @@ function AppRoutes() {
       <Route 
         path="/" 
         element={
-          isBrandedSubdomain() ? <PublicLinkHubPage /> : <HomePage />
+          isBrandedSubdomain() ? <PublicLinkHubPage /> : <RootRedirect />
         } 
       />
       <Route path="/privacy" element={<PrivacyPage />} />
