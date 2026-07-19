@@ -213,7 +213,7 @@ npx wrangler deploy worker.js --name inlinkr-go-dev
 
 The `wrangler.toml` file configures:
 
-- **Project name:** `tubelinkr` (legacy name, will be renamed to `inlinkr-platform`)
+- **Project name:** `inlinkr-platform`
 - **Build output:** `dist`
 - **D1 binding:** `DB` → `tubelinkr-db`
 - **Environment variables:** Frontend and backend variables
