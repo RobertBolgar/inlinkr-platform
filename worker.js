@@ -2,14 +2,14 @@
  * Cloudflare Worker for handling clean public redirect URLs
  *
  * This Worker handles:
- * - go.tubelinkr.com/{public_code} (NEW: global smart short link)
- * - go.tubelinkr.com/{public_code}/{placementCode} (NEW: placement link via short code)
- * - go.tubelinkr.com/{username}/{slug} (legacy: base link)
- * - go.tubelinkr.com/{username}/{slug}/{public_code} (legacy: placement link)
- * - {subdomain}.tubelinkr.com/{slug} (subdomain link)
- * - {subdomain}.tubelinkr.com/{slug}/{public_code} (subdomain placement link)
+ * - go.inlinkr.com/{public_code} (InLinkr global smart short link)
+ * - go.inlinkr.com/{public_code}/{placementCode} (InLinkr placement link)
+ * - {username}.inlinkr.com/{slug} (InLinkr branded Smart Link)
+ * - {username}.inlinkr.com/{slug}/{placementCode} (InLinkr branded placement link)
+ * - go.tubelinkr.com/{public_code} / {username}/{slug} (TubeLinkr legacy)
+ * - {subdomain}.tubelinkr.com/{slug} (TubeLinkr creator hub / branded link)
  *
- * Deployed to: go.tubelinkr.com
+ * Deployed to: tubelinkr-go (go.inlinkr.com, *.inlinkr.com, go.tubelinkr.com, *.tubelinkr.com)
  */
 
 /**
@@ -125,17 +125,27 @@ async function checkAndSendFirstMeaningfulClickEmail(env, userId) {
   }
 }
 
-// Reserved subdomains that should proxy to Pages app origins
-const RESERVED_SUBDOMAINS = [
+// Reserved subdomains that should never be treated as usernames/branded Smart Links
+const RESERVED_SUBDOMAINS = new Set([
+  "app",
   "www",
   "api",
-  "go",
-  "clerk",
+  "docs",
+  "status",
   "support",
   "accounts",
+  "clerk",
   "free-dev",
-  "pro-dev"
-];
+  "pro-dev",
+  "dev",
+  "staging",
+  "preview",
+  "test",
+  "localhost"
+]);
+
+// Redirect entry-point subdomains that are not usernames
+const REDIRECT_SUBDOMAINS = new Set(["go", "go-dev"]);
 
 /**
  * Generate an HTML unavailable response for subdomains without access
@@ -632,11 +642,11 @@ export default {
       return new Response('Service configuration error', { status: 500 });
     }
 
-    // Handle go.tubelinkr.com with redirect/tracking logic first
-    if (subdomain === "go") {
+    // Handle redirect entry-point subdomains (go.inlinkr.com, go.tubelinkr.com, etc.)
+    if (REDIRECT_SUBDOMAINS.has(subdomain)) {
       // Phase 2: New resolution order for smart short links
       // 1. Try path as global public_code (1 or 2 segments)
-      // 2. Fallback to legacy username/slug (2 or 3 segments)
+      // 2. Legacy username/slug fallback is supported only on TubeLinkr domains
 
       const segment1 = pathParts[1] || null;
       const segment2 = pathParts[2] || null;
@@ -652,7 +662,9 @@ export default {
         // If not found as public_code, fall through to legacy handling below
       }
 
-      // Case 2: Exactly 2 segments (go.tubelinkr.com/{public_code}/{placementCode} OR {username}/{slug})
+      // Case 2: Exactly 2 segments
+      // go.inlinkr.com/{public_code}/{placementCode} OR
+      // go.tubelinkr.com/{public_code}/{placementCode} OR legacy {username}/{slug}
       if (pathParts.length === 3 && segment1 && segment2) {
         // First try as public_code + placementCode
         const resolved = await resolveLinkByPublicCode(env, segment1);
@@ -661,21 +673,25 @@ export default {
           return handleRedirect(request, env, resolved.user, resolved.link.slug, segment2, url);
         }
 
-        // Fallback to legacy username/slug
-        const user = await env.DB.prepare(
-          'SELECT id FROM users WHERE username = ? AND is_active = 1'
-        ).bind(segment1).first();
+        // Legacy username/slug fallback is only supported on TubeLinkr domains.
+        // go.inlinkr.com must resolve by public_code only.
+        if (!hostname.endsWith('.inlinkr.com')) {
+          const user = await env.DB.prepare(
+            'SELECT id FROM users WHERE username = ? AND is_active = 1'
+          ).bind(segment1).first();
 
-        if (user) {
-          // segment2 is slug, segment3 is optional placement code
-          return handleRedirect(request, env, user, segment2, segment3, url);
+          if (user) {
+            // segment2 is slug, segment3 is optional placement code
+            return handleRedirect(request, env, user, segment2, segment3, url);
+          }
         }
 
         return new Response('Link not found', { status: 404 });
       }
 
       // Case 3: 3+ segments (legacy: go.tubelinkr.com/{username}/{slug}/{placementCode})
-      if (pathParts.length >= 4 && segment1 && segment2) {
+      // go.inlinkr.com never supports this legacy format.
+      if (!hostname.endsWith('.inlinkr.com') && pathParts.length >= 4 && segment1 && segment2) {
         const user = await env.DB.prepare(
           'SELECT id FROM users WHERE username = ? AND is_active = 1'
         ).bind(segment1).first();
@@ -808,6 +824,51 @@ export default {
         statusText: res.statusText,
         headers: res.headers,
       });
+    }
+
+    // InLinkr apex/root domain: proxy to marketing origin if routed here
+    if (hostname === "inlinkr.com" || hostname === "www.inlinkr.com") {
+      const marketingOrigin = env.INLINKR_MARKETING_ORIGIN;
+      if (!marketingOrigin) {
+        return new Response('Service configuration error', { status: 500 });
+      }
+      const proxyUrl = new URL(url.pathname + url.search, marketingOrigin);
+      return fetch(proxyUrl.toString(), request);
+    }
+
+    // InLinkr branded Smart Links: username.inlinkr.com/{slug}
+    if (hostname.endsWith(".inlinkr.com") && hostname !== "inlinkr.com" && !REDIRECT_SUBDOMAINS.has(subdomain)) {
+      if (RESERVED_SUBDOMAINS.has(subdomain)) {
+        const targetOrigin = subdomain === "app" ? env.INLINKR_APP_ORIGIN : env.INLINKR_MARKETING_ORIGIN;
+        if (!targetOrigin) {
+          return new Response('Service configuration error', { status: 500 });
+        }
+        const proxyUrl = new URL(url.pathname + url.search, targetOrigin);
+        return fetch(proxyUrl.toString(), request);
+      }
+
+      // Root of a branded Smart Link domain: redirect to the marketing site.
+      // The user's creator hub lives on username.tubelinkr.com, not here.
+      if (pathParts.length < 2) {
+        const marketingOrigin = env.INLINKR_MARKETING_ORIGIN;
+        if (marketingOrigin) {
+          return Response.redirect(marketingOrigin, 302);
+        }
+        return new Response('Invalid redirect URL', { status: 400 });
+      }
+
+      const slug = pathParts[1];
+      const public_code = pathParts[2] || null;
+
+      const user = await env.DB.prepare(
+        'SELECT id FROM users WHERE (subdomain = ? OR username = ?) AND is_active = 1'
+      ).bind(subdomain, subdomain).first();
+
+      if (!user) {
+        return new Response('User not found', { status: 404 });
+      }
+
+      return handleRedirect(request, env, user, slug, public_code, url);
     }
 
     // Extract subdomain from hostname

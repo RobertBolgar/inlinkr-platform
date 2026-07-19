@@ -34,9 +34,9 @@ const ENABLE_CUSTOM_SUBDOMAINS = import.meta.env.VITE_ENABLE_CUSTOM_SUBDOMAINS =
  * In InLinkr development (ENABLE_CUSTOM_SUBDOMAINS=false):
  * - All URLs use redirect base URL (go-dev.inlinkr.com)
  * - Format: {redirectBaseUrl}/{publicCode} or {redirectBaseUrl}/{username}/{slug}
- * 
- * In TubeLinkr production (ENABLE_CUSTOM_SUBDOMAINS=true):
- * - Pro/Founder with CUSTOM_SUBDOMAIN feature: {subdomain}.tubelinkr.com/{slug}
+ *
+ * In InLinkr production (ENABLE_CUSTOM_SUBDOMAINS=true):
+ * - Pro/Founder with CUSTOM_SUBDOMAIN feature: {subdomain}.inlinkr.com/{slug}
  * - Free users: {redirectBaseUrl}/{publicCode} or {redirectBaseUrl}/{username}/{slug}
  */
 export function buildSmartLinkUrl(options: SmartLinkUrlOptions, user?: User | null): string {
@@ -57,7 +57,7 @@ export function buildSmartLinkUrl(options: SmartLinkUrlOptions, user?: User | nu
 }
 
 /**
- * Build URL using redirect base URL (go-dev.inlinkr.com or go.tubelinkr.com)
+ * Build URL using redirect base URL (go-dev.inlinkr.com or go.inlinkr.com)
  */
 function buildRedirectBaseUrl(options: SmartLinkUrlOptions): string {
   const { slug, publicCode, username, placementCode } = options;
