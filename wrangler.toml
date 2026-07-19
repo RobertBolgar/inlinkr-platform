@@ -7,11 +7,9 @@ binding = "DB"
 database_name = "tubelinkr-db"
 database_id = "7fd2cd09-fafa-496f-8310-a7e86ca5c03c"
 
-[[rate_limits]]
-binding = "RATE_LIMITER"
-
-# Enable diagnostics on pro-dev for debugging attribution issues
-vars = { ENABLE_DIAGNOSTICS = "true" }
+[vars]
+# Enable diagnostics for debugging
+ENABLE_DIAGNOSTICS = "true"
 
 [env.production]
 # Temporary development phase: app.inlinkr.com is the InLinkr development environment,
