@@ -13,8 +13,8 @@ routes = [
 # Environment variables for Pages origins
 [vars]
 PAGES_ORIGIN = "https://tubelinkr.com"
-INLINKR_APP_ORIGIN = "https://app.inlinkr.com"
-INLINKR_MARKETING_ORIGIN = "https://inlinkr.com"
+INLINKR_APP_ORIGIN = "https://inlinkr-platform.pages.dev"
+INLINKR_MARKETING_ORIGIN = "https://inlinkr-home.pages.dev"
 PRO_DEV_PAGES_ORIGIN = "https://pro-dev.tubelinkrgit.pages.dev"
 FREE_DEV_PAGES_ORIGIN = "https://free-dev.tubelinkrgit.pages.dev"
 API_ORIGIN = "https://tubelinkr.com"
