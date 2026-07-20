@@ -67,6 +67,12 @@ export function HomePage() {
                 >
                   See it in action →
                 </Link>
+                <Link
+                  to="/login"
+                  className="text-sm text-gray-500 hover:text-gray-400 transition-colors"
+                >
+                  Sign in
+                </Link>
               </div>
 
               <div className="flex flex-wrap justify-center lg:justify-start gap-4 text-xs text-gray-500 mt-2">

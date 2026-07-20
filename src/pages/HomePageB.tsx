@@ -73,6 +73,12 @@ export function HomePageB() {
             <p className="text-sm text-gray-500">
               Free forever. No credit card required.
             </p>
+            <Link
+              to="/login"
+              className="text-sm text-gray-500 hover:text-gray-400 transition-colors"
+            >
+              Sign in
+            </Link>
           </div>
         </section>
 

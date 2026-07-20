@@ -175,6 +175,18 @@ button {
   transform: translateY(-1px);
 }
 
+.btn-tertiary {
+  background: transparent;
+  color: var(--text-subtle);
+  border: none;
+  font-size: 0.875rem;
+  padding: 0.875rem 1.25rem;
+}
+
+.btn-tertiary:hover {
+  color: var(--text-muted);
+}
+
 /* Sections */
 .section {
   padding: 5rem 0;
